@@ -1,0 +1,6 @@
+[submodule "wp-less"]
+	path = wp-less
+	url = git@github.com:sanchothefat/wp-less.git
+[submodule "WPThumb"]
+	path = WPThumb
+	url = git@github.com:humanmade/WPThumb.git
