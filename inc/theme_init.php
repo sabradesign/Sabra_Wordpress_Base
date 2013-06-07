@@ -36,6 +36,9 @@ function sabra_theme_setup()
 	// ADD THUMBNAIL SUPPORT
 	add_theme_support( 'post-thumbnails' );
 	
+	// ADD THUMBNAIL SUPPORT
+	add_theme_support( 'post-thumbnails' );
+	
 	// REGISTER MENUS
 	add_theme_support( 'menus' );
 	register_nav_menu( 'primary', __( 'Primary Menu', 'twentytwelve' ) );
@@ -44,5 +47,82 @@ function sabra_theme_setup()
 	add_theme_support( 'automatic-feed-links' );
 }
 
+/**
+ * Registers our main widget area and the front page widget areas.
+ *
+ * @since Twenty Twelve 1.0
+ */
+function twentytwelve_widgets_init() {
+	register_sidebar( array(
+		'name' => __( 'Main Sidebar', 'sabra' ),
+		'id' => 'sidebar-1',
+		'description' => __( 'Appears on posts and pages except the optional Front Page template, which has its own widgets', 'sabra' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
+	register_sidebar( array(
+		'name' => __( 'First Front Page Widget Area', 'sabra' ),
+		'id' => 'sidebar-2',
+		'description' => __( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'sabra' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+
+	register_sidebar( array(
+		'name' => __( 'Second Front Page Widget Area', 'sabra' ),
+		'id' => 'sidebar-3',
+		'description' => __( 'Appears when using the optional Front Page template with a page set as Static Front Page', 'sabra' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+	
+	register_sidebar( array(
+		'name' => __( 'First Footer Widget Area', 'sabra' ),
+		'id' => 'footer-1',
+		'description' => __( 'Appears in the footer.  First row.', 'sabra' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+	
+	register_sidebar( array(
+		'name' => __( 'Second Footer Widget Area', 'sabra' ),
+		'id' => 'footer-2',
+		'description' => __( 'Appears in the footer.  Second row.', 'sabra' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+	
+	register_sidebar( array(
+		'name' => __( 'Third Footer Widget Area', 'sabra' ),
+		'id' => 'footer-3',
+		'description' => __( 'Appears in the footer.  Third row.', 'sabra' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+	
+	register_sidebar( array(
+		'name' => __( 'Fourth Footer Widget Area', 'sabra' ),
+		'id' => 'footer-4',
+		'description' => __( 'Appears in the footer.  Fourth row.', 'sabra' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' => '</aside>',
+		'before_title' => '<h3 class="widget-title">',
+		'after_title' => '</h3>',
+	) );
+}
+add_action( 'widgets_init', 'twentytwelve_widgets_init' );
 
 ?>

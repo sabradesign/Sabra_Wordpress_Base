@@ -62,10 +62,10 @@ function sabra_row( $atts, $content = null ) {
 		$output .= '<div class="row'.$classes.'">';
 	}
 	
-	$output .= do_shortcode( $content );
+	$output .= apply_filters( 'the_content', do_shortcode( $content ) );
 	$output .= '</div>';
 	
-	if ( $fluid ) $output .= '</div>';
+	if ( $fluid == 'yes' ) $output .= '</div>';
 	
 	return $output;
 		
@@ -89,7 +89,7 @@ function sabra_one_half( $atts, $content = null ) {
 	$output = '';
 	
 	$output .= '<div class="span6'.$classes.'">';
-	$output .= do_shortcode( $content );
+	$output .= apply_filters( 'the_content', do_shortcode( $content ) );
 	$output .= '</div>';
 	
 	return $output;
@@ -114,7 +114,7 @@ function sabra_one_third( $atts, $content = null ) {
 	$output = '';
 	
 	$output .= '<div class="span4'.$classes.'">';
-	$output .= do_shortcode( $content );
+	$output .= apply_filters( 'the_content', do_shortcode( $content ) );
 	$output .= '</div>';
 	
 	return $output;
@@ -139,7 +139,7 @@ function sabra_two_third( $atts, $content = null ) {
 	$output = '';
 	
 	$output .= '<div class="span8'.$classes.'">';
-	$output .= do_shortcode( $content );
+	$output .= apply_filters( 'the_content', do_shortcode( $content ) );
 	$output .= '</div>';
 	
 	return $output;
@@ -164,7 +164,7 @@ function sabra_one_fourth( $atts, $content = null ) {
 	$output = '';
 	
 	$output .= '<div class="span3'.$classes.'">';
-	$output .= do_shortcode( $content );
+	$output .= apply_filters( 'the_content', do_shortcode( $content ) );
 	$output .= '</div>';
 	
 	return $output;
@@ -189,7 +189,7 @@ function sabra_three_fourth( $atts, $content = null ) {
 	$output = '';
 	
 	$output .= '<div class="span9'.$classes.'">';
-	$output .= do_shortcode( $content );
+	$output .= apply_filters( 'the_content', do_shortcode( $content ) );
 	$output .= '</div>';
 	
 	return $output;
@@ -500,8 +500,6 @@ function alert_function( $atts, $inner_content = null ) {
 		'type'	=>	'general',
 		'class'	=>	''
 		), $atts ) );
-
-	$output = '<div class="alert';
 	
 	switch( $type ) {
 		case 'general':
@@ -603,4 +601,311 @@ function checklist_function( $atts, $inner_content = null ) {
 	return $output;
 }
 add_shortcode( 'checklist', 'checklist_function' );
+
+//////////////////////////////////////////////////////////////////
+// Image
+// [image src="" alt="" width="" height="" crop="" crop_from="" class=""][/image]
+//////////////////////////////////////////////////////////////////
+function shortcode_image_function( $atts, $inner_content = null ) {
+	extract( shortcode_atts( array(
+		'src'	=>	'',
+		'alt'	=>	'',
+		'width'	=>	50,
+		'height'	=>	50,
+		'crop'	=>	true,
+		'crop_from'	=>	'center,center',
+		'class'	=>	'',
+		'link'	=>	true
+		), $atts ) );
+		
+	$img_args = array(
+		'width'		=>	$width,
+		'height'	=>	$height,
+		'crop'		=>	true,
+		'crop_from_position'	=>	$crop_from	
+	);
+	
+	$thumb_src = wpthumb( $src, $img_args );
+	$class != '' ? $classes = ' '.$class : $classes = '';
+	
+	$output = '';
+	
+	$link ? $output .= '<a href="'.$src.'" title="'.$alt.'" rel="fancybox" class="thumbnail'.$classes.'">' : $output .= '<div class="thumbnail'.$classes.'">';
+	
+	$output .= '<img src="'.$thumb_src.'" alt="'.$alt.'" width="'.$width.'" height="'.$height.'" class="">';
+	
+	$link ? $output .= '</a>' : $output .= '</div>';
+	
+	return $output;
+}
+add_shortcode( 'image', 'shortcode_image_function' );
+
+//////////////////////////////////////////////////////////////////
+// Latest Blog Post Shortcode
+// [latest_posts cat="" post_type="" number="" class=""][/latest_post]
+//////////////////////////////////////////////////////////////////
+add_shortcode('latest_posts', 'shortcode_latest_post');
+	function shortcode_latest_post($atts, $content) {
+		$atts = shortcode_atts(
+			array(
+				'cat' => '',
+				'post_type'	=>	'',
+				'number'	=>	1,
+				'class'		=>	''
+			), $atts);
+		extract( $atts );
+		
+		$output = '';
+		
+		$class != '' ? $classes = ' '.$class : $classes = '';
+		
+		$output .= '<div class="latest_posts_container'.$classes.'">';
+		$output .= '<ul class="thumbnails">';
+		
+		$latest_post_args = array(
+			'posts_per_page'	=>	$number,
+			'category_name'	=>	$cat,
+			'post__in'			=>	get_option('sticky_posts')
+		);
+		
+		$latest_post = new WP_Query( $latest_post_args );
+		
+		if ( $latest_post->have_posts() ) {
+			
+			$latest_post->the_post();
+			
+			if ( $content != '' ) {
+				$output .= do_shortcode($content);
+			} else {
+			
+				$output .= '<li>';
+				$output .= '<div class="row-fluid">';
+				if ( has_post_thumbnail() ) {
+					$output .= '<a href="'.get_permalink().'" class="thumbnail span6">';
+					$output .= get_the_post_thumbnail( get_the_ID() );
+					$output .= '</a>';
+					
+					$output .= '<div class="span6">';
+				} else {
+					$output .= '<div class="span12">';
+				}
+				
+				$output .= '<div class="caption">';
+				
+				$output .= '<h3>'.get_the_title().'</h3>';
+				$output .= '<p>'.get_the_excerpt().'</p>';
+				$output .= '<a href="'.get_permalink().'" title="'.get_the_title().'" class="read-more">Read More &rarr;</a>';
+				
+				$output .= '</div>';
+				$output .= '</div>';
+				
+				$output .= '</div>';
+				$output .= '</li>';
+			
+			}
+		
+		} else {
+		
+			$latest_post_args = array(
+				'posts_per_page'	=>	1,
+				'category_name'	=>	$cat
+			);
+		
+			$latest_post = new WP_Query( $latest_post_args );
+			
+			if ( $latest_post->have_posts() ) {
+			
+				$latest_post->the_post();
+			
+				if ( $content != '' ) {
+					$output .= do_shortcode($content);
+				} else {
+				
+				$output .= '<li>';
+				$output .= '<div class="row-fluid">';
+				
+				if ( has_post_thumbnail() ) {
+					$output .= '<a href="'.get_permalink().'" class="thumbnail span6">';
+					$output .= get_the_post_thumbnail( get_the_ID() );
+					$output .= '</a>';
+					
+					$output .= '<div class="span6">';
+				} else {
+					$output .= '<div class="span12">';
+				}
+				
+				$output .= '<div class="caption">';
+				
+				$output .= '<h3>'.get_the_title().'</h3>';
+				$output .= '<p>'.get_the_excerpt().'</p>';
+				$output .= '<a href="'.get_permalink().'" title="'.get_the_title().'" class="read-more">Read More &rarr;</a>';
+				
+				$output .= '</div>';
+				$output .= '</div>';
+				
+				$output .= '</div>';
+				$output .= '</li>';					
+				
+				}
+		
+			}
+		
+		}
+		
+		wp_reset_postdata();
+		
+		$output .= '</ul></div>';
+		
+		return $output;
+
+			
+	}
+
+//////////////////////////////////////////////////////////////////
+// Latest Blog Post Title Shortcode
+// [latest_post_title]
+//////////////////////////////////////////////////////////////////
+add_shortcode('latest_post_title', 'shortcode_latest_post_title');
+	function shortcode_latest_post_title($atts, $content) {
+		
+		global $post;
+		
+		return esc_html( $post->post_title );
+			
+	}
+	
+//////////////////////////////////////////////////////////////////
+// Latest Blog Post Permalink Shortcode
+// [latest_post_permalink]
+//////////////////////////////////////////////////////////////////
+add_shortcode('latest_post_permalink', 'shortcode_latest_post_permalink');
+	function shortcode_latest_post_permalink($atts, $content) {
+		
+		global $post;
+		
+		return get_permalink( $post->ID );
+			
+	}
+	
+//////////////////////////////////////////////////////////////////
+// Latest Blog Post Excerpt Shortcode
+//////////////////////////////////////////////////////////////////
+add_shortcode('latest_post_excerpt', 'shortcode_latest_post_excerpt');
+	function shortcode_latest_post_excerpt($atts, $content) {
+		
+		global $post;
+		
+		return $post->post_excerpt;
+			
+	}
+	
+//////////////////////////////////////////////////////////////////
+// Latest Blog Post Image URL Shortcode
+// [latest_post_thumb_url]
+//////////////////////////////////////////////////////////////////
+// add_shortcode('latest_post_thumb_url', 'shortcode_latest_post_thumbnail_img_url');
+// 	function shortcode_latest_post_thumbnail_img_url($atts, $content) {
+// 		
+// 		global $post;
+// 		
+// 		if ( has_post_thumbnail( $post->ID ) ) {
+// 		
+// 			$id = get_post_thumbnail_id();
+// 			$thumb_src = wp_get_attachment_image_src( $id, 'full' );
+// 			$image_url = $thumb_src[0];
+// 			$image_url = timthumb_photo( $image_url, 300, 300, '', false);
+// 		
+// 		} elseif( $youtubeID = get_post_meta( $post->ID, 'DALDELLO_youtube_id',  true ) ) {
+// 		
+// 			$image_url = timthumb_photo('http://img.youtube.com/vi/' . $youtubeID . '/hqdefault.jpg', 300, 300, '', false);
+// 			
+// 		} else {
+// 			$args = array(
+// 				'post_type' => 'attachment',
+// 				'numberposts' => 1,
+// 				'post_status' => null,
+// 				'post_parent' => $post->ID,
+// 				'orderby'	=>	'menu_order',
+// 				'order'		=>	'ASC'
+// 			);
+// 			$attachments = get_posts($args);
+// 			if ($attachments) {
+// 				$attachment = $attachments[0];
+// 				$thumb_src = wp_get_attachment_image_src( $attachment->ID, 'full' );
+// 				$image_url = $thumb_src[0];
+// 				$image_url = timthumb_photo( $image_url, 300, 300, '', false);
+// 				
+// 			} else {	
+// 				return false;
+// 			}
+// 		}
+// 		
+// 		return $image_url;
+// 			
+// 	}
+
+//////////////////////////////////////////////////////////////////
+// Company Address
+// [company_address name="" street="" city="" state="" zip=""]
+//////////////////////////////////////////////////////////////////
+function shortcode_company_address_function( $atts, $inner_content = null ) {
+	
+	$company_info = get_option( 'company_info' );
+	$defaults = array();
+	if ( isset( $company_info ) ) {
+		
+		isset( $company_info['name'] ) ? $defaults['name'] = $company_info['name'] : $defaults['name'] = "";
+		isset( $company_info['street'] ) ? $defaults['street'] = $company_info['street'] : $defaults['street'] = "";
+		isset( $company_info['city'] ) ? $defaults['city'] = $company_info['city'] : $defaults['city'] = "";
+		isset( $company_info['state'] ) ? $defaults['state'] = $company_info['state'] : $defaults['state'] = "";
+		isset( $company_info['zip'] ) ? $defaults['zip'] = $company_info['zip'] : $defaults['zip'] = "";
+		isset( $company_info['phone'] ) ? $defaults['phone'] = $company_info['phone'] : $defaults['phone'] = "";
+		
+		
+	
+	} else {
+	
+		$defaults = array(
+			'name'		=>	'',
+			'street'	=>	'',
+			'city'	=>	'',
+			'state'	=>	'',
+			'zip'	=>	'',
+			'phone'	=>	''
+		);
+		
+	}
+	
+	$defaults['url'] = get_bloginfo('url');
+	$defaults['email'] = get_bloginfo('admin_email');
+	$defaults['class'] = '';
+	
+	extract( shortcode_atts( $defaults, $atts ) );
+	
+	$special_chars = array( '+','(',')','-',' ' );
+	$tel = str_replace( $special_chars, '', $phone );
+	
+	$output = '<address itemscope="" itemtype="http://data-vocabulary.org/Organization" class="'.$class.'">';
+	
+	if ( $content == null ) {
+	
+	$output .= '<span itemprop="name">'.$name.'</span><br>';
+	$output .= '<span itemprop="address" itemscope="" itemtype="http://data-vocabulary.org/Address">';
+		$output .= '<span itemprop="street-address">'.$street.'</span><br>';
+		$output .= '<span itemprop="locality">'.$city.'</span>, <span itemprop="region">'.$state.'</span> '.$zip.'</span><br>';
+	$output .= '<a href="'.$url.'" itemprop="url">'.$url.'</a> | <a href="mailto:'.$email.'">'.$email.'</a><br>';
+	$output .= '<span itemprop="tel"><a href="tel:'.$tel.'" title="Call '.$name.'">'.$phone.'</a></span><br>';
+	
+	} else {
+	
+		$output .= do_shortcode( $content );
+	
+	}
+	
+	$output .= '</address>';
+	
+	return $output;
+}
+add_shortcode( 'company_address', 'shortcode_company_address_function' );
+
 ?>

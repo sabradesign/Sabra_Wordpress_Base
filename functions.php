@@ -47,6 +47,24 @@ function sabra_enqueue_scripts_styles() {
 		'in_footer'		=>	true
 	);
 	
+	// Script Name:  FANCYBOX
+	$scripts[] = array(
+		'handle'	=>	'fancybox',
+		'src'	=>	get_template_directory_uri() . '/js/fancybox/jquery.fancybox.js',
+		'dependencies'	=>	array( 'jquery' ),
+		'version'		=>	'2.1.4',
+		'in_footer'		=>	true
+	);
+	
+	// Script Name:  FANCYBOX HELPER THUMBNAILS
+	$scripts[] = array(
+		'handle'	=>	'fancybox-thumbs',
+		'src'	=>	get_template_directory_uri() . '/js/fancybox/helpers/jquery.fancybox-thumbs.js',
+		'dependencies'	=>	array( 'jquery', 'fancybox' ),
+		'version'		=>	'1.0.7',
+		'in_footer'		=>	true
+	);
+	
 	// Script Name:  GLOBAL
 	$scripts[] = array(
 		'handle'	=>	'global',
@@ -81,6 +99,19 @@ function sabra_enqueue_scripts_styles() {
 		'dependencies'	=>	null,
 		'version'		=>	'2.0',
 		'media'			=>	'screen'
+	);
+	
+	// CSS Style Name: Fancybox CSS
+	$styles[] = array(
+		'handle'	=>	'fancybox',
+		'src'		=>	get_template_directory_uri() . '/js/fancybox/jquery.fancybox.css'
+	);
+	
+	// CSS Style Name: Fancybox Helper Thumbnails CSS
+	$styles[] = array(
+		'handle'	=>	'fancybox-thumb',
+		'src'		=>	get_template_directory_uri() . '/js/fancybox/helpers/jquery.fancybox-thumbs.css',
+		'dependencies'	=>	array('fancybox')
 	);
 	
 	// ADD THE STYLES AND SCRIPS FUNCTIONS

@@ -44,6 +44,13 @@ function register_required_plugins() {
 			'required' 				=> true, // If false, the plugin is only 'recommended' instead of required
 			'force_activation' 		=> true // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
 		),
+		
+		// USER META
+		array(
+			'name'     				=> 'User Meta Plugin', // The plugin name
+			'slug'     				=> 'user-meta', // The plugin slug (typically the folder name)
+			'source'   				=> get_stylesheet_directory() . '/inc/plugins/user-meta.zip' // The plugin source
+		),
 
 		// This is an example of how to include a plugin from the WordPress Plugin Repository
 		array(
@@ -81,6 +88,11 @@ function register_required_plugins() {
 		array(
 			'name'		=>	'W3 Total Cache',
 			'slug'		=>	'w3-total-cache',
+			'required'	=>	false
+		),
+		array(
+			'name'		=>	'Disqus Commenting System',
+			'slug'		=>	'disqus-comment-system',
 			'required'	=>	false
 		)
 
@@ -128,5 +140,8 @@ function custom_login_css() {
 	echo '<link rel="stylesheet" type="text/css" href="'.get_stylesheet_directory_uri().'/inc/login.css" />'; 
 }
 add_action('login_head', 'custom_login_css');
+
+// MAKE SHORTCODES WORK IN WIDGETS
+add_filter('widget_text', 'do_shortcode');
 
 ?>

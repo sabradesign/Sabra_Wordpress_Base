@@ -55,10 +55,19 @@
 	wp_head();
 ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 <header id="#main-header">
-	<div class="navbar">
+	<div class="navbar navbar-static-top">
 	  <div class="navbar-inner">
 	  	<div class="container">
 	  		<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
@@ -68,7 +77,7 @@
 				<span class="icon-bar"></span>
 			  </a>
 	  	
-			<a class="brand" href="#">Title</a>
+			<a class="brand" href="<?php bloginfo('wpurl'); ?>">Title</a>
 			
 			<div class="nav-collapse collapse">
 				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav', 'container' => 'false', 'walker' => new sabra_walker_nav_menu ) ); ?>
@@ -78,4 +87,4 @@
 	</div>
 </header>
 
-<div id="main">
+<div id="main" class="with-sidebar">
