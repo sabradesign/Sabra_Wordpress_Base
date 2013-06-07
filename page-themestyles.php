@@ -35,7 +35,7 @@
             jQuery(document).ready(function($) {
 
                     var styleValue = $('input#prometheus-class');
-                    var styleTarget = $('#prometheus-wrap');
+                    var styleTarget = $('body');
 
                     $(styleValue).bind("focusout", function(event){
 

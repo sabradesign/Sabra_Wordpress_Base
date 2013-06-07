@@ -554,7 +554,7 @@
         init : function(ed, url) {  
             ed.addButton('hero', {  
                 title : 'Add hero element',  
-                image : url+'/recent-posts.png',  
+                image : url+'/icon-hero.png',  
                 onclick : function() {  
                      ed.selection.setContent('[hero]Hero Content here...[/hero]');  
   
@@ -576,7 +576,7 @@
         init : function(ed, url) {  
             ed.addButton('well', {  
                 title : 'Add well',  
-                image : url+'/recent-posts.png',  
+                image : url+'/icon-well.png',  
                 onclick : function() {  
                      ed.selection.setContent('[well size="ex. large or small (optional)"]Well Content here...[/well]');  
   
@@ -598,7 +598,7 @@
         init : function(ed, url) {  
             ed.addButton('accordion', {  
                 title : 'Add Accordion',  
-                image : url+'/recent-posts.png',  
+                image : url+'/icon-accordion.png',  
                 onclick : function() {  
                      ed.selection.setContent('[accordion id=""]<br />[accordion_group id="" title="" start="ex. in"]Accordion content...[/accordion_group]<br />[accordion_group id="" title="" start="ex. in"]Accordion content...[/accordion_group]<br />[/accordion]');  
   
@@ -620,7 +620,7 @@
         init : function(ed, url) {  
             ed.addButton('tooltip', {  
                 title : 'Add Tooltip',  
-                image : url+'/recent-posts.png',  
+                image : url+'/icon-tooltip.png',  
                 onclick : function() {  
                      ed.selection.setContent('[tooltip class="" content="" html="ex. 1"][/tooltip]');  
   
@@ -642,7 +642,7 @@
         init : function(ed, url) {  
             ed.addButton('popover', {  
                 title : 'Add Popover',  
-                image : url+'/recent-posts.png',  
+                image : url+'/icon-popover.png',  
                 onclick : function() {  
                      ed.selection.setContent('[popover class="" title="" content="" html="ex. 1"][/popover]');  
   
@@ -664,7 +664,7 @@
         init : function(ed, url) {  
             ed.addButton('row', {  
                 title : 'Add Row',  
-                image : url+'/recent-posts.png',  
+                image : url+'/icon-row.png',  
                 onclick : function() {  
                      ed.selection.setContent('[row fluid="no"][/row]');  
   

@@ -49,7 +49,7 @@
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'stylesheet_url' ); ?>" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <!--[if lt IE 9]>
-<script src="<?php echo get_template_directory_uri(); ?>/js/html5.js" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/html5shiv.js" type="text/javascript"></script>
 <![endif]-->
 <?php
 	wp_head();
@@ -66,7 +66,7 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-<header id="#main-header">
+
 	<div class="navbar navbar-static-top">
 	  <div class="navbar-inner">
 	  	<div class="container">
@@ -84,6 +84,11 @@
 			</div>
 		</div>
 	  </div>
+	</div>
+	
+<header id="#main-header">
+	<div class="container">
+		<!-- Main Header Content Here -->
 	</div>
 </header>
 

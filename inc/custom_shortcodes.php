@@ -860,7 +860,7 @@ function shortcode_company_address_function( $atts, $inner_content = null ) {
 		isset( $company_info['state'] ) ? $defaults['state'] = $company_info['state'] : $defaults['state'] = "";
 		isset( $company_info['zip'] ) ? $defaults['zip'] = $company_info['zip'] : $defaults['zip'] = "";
 		isset( $company_info['phone'] ) ? $defaults['phone'] = $company_info['phone'] : $defaults['phone'] = "";
-		
+		isset( $company_info['email'] ) ? $defaults['email'] = $company_info['email'] : $defaults['email'] = get_bloginfo('admin_email');
 		
 	
 	} else {
@@ -871,13 +871,13 @@ function shortcode_company_address_function( $atts, $inner_content = null ) {
 			'city'	=>	'',
 			'state'	=>	'',
 			'zip'	=>	'',
-			'phone'	=>	''
+			'phone'	=>	'',
+			'email'	=>	get_bloginfo('admin_email')
 		);
 		
 	}
 	
 	$defaults['url'] = get_bloginfo('url');
-	$defaults['email'] = get_bloginfo('admin_email');
 	$defaults['class'] = '';
 	
 	extract( shortcode_atts( $defaults, $atts ) );

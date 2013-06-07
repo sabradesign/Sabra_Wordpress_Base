@@ -11,15 +11,6 @@ function sabra_enqueue_scripts_styles() {
 	$scripts = array();
 	$styles = array();
 	
-	// Script Name:  HTML5Shiv
-	$scripts[] = array(
-		'handle'	=>	'html5shiv-js',
-		'src'	=>	get_template_directory_uri() . '/js/html5shiv.js',
-		'dependencies'	=>	null,
-		'version'		=>	'3.6.2',
-		'in_footer'		=>	true
-	);
-	
 	// Script Name:  MODERNIZR
 	$scripts[] = array(
 		'handle'	=>	'modernizr',

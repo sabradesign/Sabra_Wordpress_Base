@@ -15,7 +15,13 @@ function sabra_theme_setup()
 		wp_delete_comment( 1 );
 		
 		// Once done, we register our setting to make sure we don't duplicate everytime we activate.
-		update_option( 'reality_theme_setup_status', '1' );
+		update_option( 'sabra_theme_setup_status', '1' );
+
+		// Set Default Bootstrap Variables
+		$bootstrap_vars = array(
+			'linkColor'	=>	'#08c',
+		);
+		//update_option( 'custom_bootstrap_vars', $bootstrap_vars );
 
 		// Lets let the admin know whats going on.
 		$msg = '

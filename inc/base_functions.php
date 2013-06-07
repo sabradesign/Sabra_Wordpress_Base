@@ -26,6 +26,7 @@ include_once( 'custom_shortcodes.php' );
 include_once( 'theme_init.php' );
 include_once( 'tiny_mce_buttons.php' );
 include_once( 'nav-walker.php' );
+include_once( 'admin_menus.php' );
 
 // ADMIN MENUS
 include_once( 'custom_admin_menus.php' );
@@ -143,5 +144,23 @@ add_action('login_head', 'custom_login_css');
 
 // MAKE SHORTCODES WORK IN WIDGETS
 add_filter('widget_text', 'do_shortcode');
+
+// LESS VARIABLE CUSTOMIZER
+
+add_filter( 'less_vars', 'my_less_vars', 10, 2 );
+function my_less_vars( $vars, $handle ) {
+    // $handle is a reference to the handle used with wp_enqueue_style()
+    $custom_vars = get_option('custom_bootstrap_vars');
+    
+    if ( $custom_vars ) {
+    	foreach( $custom_vars as $var => $value ) {
+    		if ( $value != '' ) $vars[$var] = $value;
+    	}
+    }
+    
+    //die( var_dump( $vars ) );
+    
+    return $vars;
+}
 
 ?>
