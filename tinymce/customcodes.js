@@ -74,7 +74,7 @@
                 title : 'Add a button',  
                 image : url+'/button-button.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[button color="e.g. green, darkgreen, orange, blue, red, pink, darkgray, lightgray" size="large or small" gradient1="" gradient2="" link="" target=""]Text here[/button]');  
+                     ed.selection.setContent('[button color="e.g. green, darkgreen, orange, blue, red, pink, darkgray, lightgray" size="large or small" class="" link="" target=""]Text here[/button]');  
   
                 }  
             });  
@@ -228,7 +228,7 @@
                 title : 'Add a one_half column',  
                 image : url+'/button-12.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[one_half last="no"]...[/one_half]');  
+                     ed.selection.setContent('[one_half]...[/one_half]');  
   
                 }  
             });  
@@ -250,7 +250,7 @@
                 title : 'Add a one_third column',  
                 image : url+'/button-13.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[one_third last="no"]...[/one_third]');  
+                     ed.selection.setContent('[one_third]...[/one_third]');  
   
                 }  
             });  
@@ -272,7 +272,7 @@
                 title : 'Add a two_third column',  
                 image : url+'/button-23.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[two_third last="no"]...[/two_third]');  
+                     ed.selection.setContent('[two_third]...[/two_third]');  
   
                 }  
             });  
@@ -294,7 +294,7 @@
                 title : 'Add a one_fourth column',  
                 image : url+'/button-14.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[one_fourth last="no"]...[/one_fourth]');  
+                     ed.selection.setContent('[one_fourth]...[/one_fourth]');  
   
                 }  
             });  
@@ -316,7 +316,7 @@
                 title : 'Add a three_fourth column',  
                 image : url+'/button-34.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[three_fourth last="no"]...[/three_fourth]');   
+                     ed.selection.setContent('[three_fourth]...[/three_fourth]');   
   
                 }  
             });  
@@ -424,7 +424,7 @@
                 title : 'Add an alert message',  
                 image : url+'/alert-icon.png',  
                 onclick : function() {  
-                     ed.selection.setContent('[alert type="e.g. general, error, success, notice"]Your Message Goes Here.[/alert]');  
+                     ed.selection.setContent('[alert type="e.g. general, error, success, info"]Your Message Goes Here.[/alert]');  
   
                 }  
             });  
@@ -544,4 +544,136 @@
         },  
     });  
     tinymce.PluginManager.add('recent_posts', tinymce.plugins.recent_posts);  
+})();
+
+//////////////////////////////////////////////////////////////////
+// Add Hero Element
+//////////////////////////////////////////////////////////////////
+(function() {  
+    tinymce.create('tinymce.plugins.hero', {  
+        init : function(ed, url) {  
+            ed.addButton('hero', {  
+                title : 'Add hero element',  
+                image : url+'/recent-posts.png',  
+                onclick : function() {  
+                     ed.selection.setContent('[hero]Hero Content here...[/hero]');  
+  
+                }  
+            });  
+        },  
+        createControl : function(n, cm) {  
+            return null;  
+        },  
+    });  
+    tinymce.PluginManager.add('hero', tinymce.plugins.hero);  
+})();
+
+//////////////////////////////////////////////////////////////////
+// Add Well
+//////////////////////////////////////////////////////////////////
+(function() {  
+    tinymce.create('tinymce.plugins.well', {  
+        init : function(ed, url) {  
+            ed.addButton('well', {  
+                title : 'Add well',  
+                image : url+'/recent-posts.png',  
+                onclick : function() {  
+                     ed.selection.setContent('[well size="ex. large or small (optional)"]Well Content here...[/well]');  
+  
+                }  
+            });  
+        },  
+        createControl : function(n, cm) {  
+            return null;  
+        },  
+    });  
+    tinymce.PluginManager.add('well', tinymce.plugins.well);  
+})();
+
+//////////////////////////////////////////////////////////////////
+// Add Accordion
+//////////////////////////////////////////////////////////////////
+(function() {  
+    tinymce.create('tinymce.plugins.accordion', {  
+        init : function(ed, url) {  
+            ed.addButton('accordion', {  
+                title : 'Add Accordion',  
+                image : url+'/recent-posts.png',  
+                onclick : function() {  
+                     ed.selection.setContent('[accordion id=""]<br />[accordion_group id="" title="" start="ex. in"]Accordion content...[/accordion_group]<br />[accordion_group id="" title="" start="ex. in"]Accordion content...[/accordion_group]<br />[/accordion]');  
+  
+                }  
+            });  
+        },  
+        createControl : function(n, cm) {  
+            return null;  
+        },  
+    });  
+    tinymce.PluginManager.add('accordion', tinymce.plugins.accordion);  
+})();
+
+//////////////////////////////////////////////////////////////////
+// Add Tooltip
+//////////////////////////////////////////////////////////////////
+(function() {  
+    tinymce.create('tinymce.plugins.tooltip', {  
+        init : function(ed, url) {  
+            ed.addButton('tooltip', {  
+                title : 'Add Tooltip',  
+                image : url+'/recent-posts.png',  
+                onclick : function() {  
+                     ed.selection.setContent('[tooltip class="" content="" html="ex. 1"][/tooltip]');  
+  
+                }  
+            });  
+        },  
+        createControl : function(n, cm) {  
+            return null;  
+        },  
+    });  
+    tinymce.PluginManager.add('tooltip', tinymce.plugins.tooltip);  
+})();
+
+//////////////////////////////////////////////////////////////////
+// Add Popover
+//////////////////////////////////////////////////////////////////
+(function() {  
+    tinymce.create('tinymce.plugins.popover', {  
+        init : function(ed, url) {  
+            ed.addButton('popover', {  
+                title : 'Add Popover',  
+                image : url+'/recent-posts.png',  
+                onclick : function() {  
+                     ed.selection.setContent('[popover class="" title="" content="" html="ex. 1"][/popover]');  
+  
+                }  
+            });  
+        },  
+        createControl : function(n, cm) {  
+            return null;  
+        },  
+    });  
+    tinymce.PluginManager.add('popover', tinymce.plugins.popover);  
+})();
+
+//////////////////////////////////////////////////////////////////
+// Add Row
+//////////////////////////////////////////////////////////////////
+(function() {  
+    tinymce.create('tinymce.plugins.row', {  
+        init : function(ed, url) {  
+            ed.addButton('row', {  
+                title : 'Add Row',  
+                image : url+'/recent-posts.png',  
+                onclick : function() {  
+                     ed.selection.setContent('[row fluid="no"][/row]');  
+  
+                }  
+            });  
+        },  
+        createControl : function(n, cm) {  
+            return null;  
+        },  
+    });  
+    tinymce.PluginManager.add('row', tinymce.plugins.row);  
 })();

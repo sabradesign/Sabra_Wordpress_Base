@@ -13,8 +13,8 @@ function sabra_enqueue_scripts_styles() {
 	
 	// Script Name:  HTML5Shiv
 	$scripts[] = array(
-		'slug'	=>	'html5shiv-js',
-		'location'	=>	get_template_directory_uri() . '/js/html5shiv.js',
+		'handle'	=>	'html5shiv-js',
+		'src'	=>	get_template_directory_uri() . '/js/html5shiv.js',
 		'dependencies'	=>	null,
 		'version'		=>	'3.6.2',
 		'in_footer'		=>	true
@@ -22,10 +22,10 @@ function sabra_enqueue_scripts_styles() {
 	
 	// Script Name:  MODERNIZR
 	$scripts[] = array(
-		'handle'	=>	'html5shiv-js',
-		'src'	=>	get_template_directory_uri() . '/js/html5shiv.js',
-		'dependencies'	=>	null,
-		'version'		=>	'3.6.2',
+		'handle'	=>	'modernizr',
+		'src'	=>	get_template_directory_uri() . '/js/modernizr.min.js',
+		'dependencies'	=>	array( 'jquery' ),
+		'version'		=>	'2.6.2',
 		'in_footer'		=>	true
 	);
 	
@@ -44,6 +44,15 @@ function sabra_enqueue_scripts_styles() {
 		'src'	=>	get_template_directory_uri() . '/js/flexslider/jquery.flexslider-min.js',
 		'dependencies'	=>	array( 'jquery' ),
 		'version'		=>	'2.1',
+		'in_footer'		=>	true
+	);
+	
+	// Script Name:  GLOBAL
+	$scripts[] = array(
+		'handle'	=>	'global',
+		'src'	=>	get_template_directory_uri() . '/js/global.js',
+		'dependencies'	=>	array( 'jquery' ),
+		'version'		=>	'1.0',
 		'in_footer'		=>	true
 	);
 	

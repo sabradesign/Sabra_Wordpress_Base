@@ -14,15 +14,15 @@ function add_button() {
 }  
 
 function register_button($buttons) {  
-   array_push($buttons, "soundcloud", "button", "dropcap", "highlight", "checklist", "tabs", "toggle", "one_half", "one_third", "two_third", "one_fourth", "three_fourth", "slider", "testimonial", "progress", "person", "alert", "pricing_table", "recent_works", "tagline_box", "content_boxes", "recent_posts");  
+   array_push($buttons, "youtube", "vimeo", "soundcloud", "button", "checklist", "tabs", "toggle", "one_half", "one_third", "two_third", "one_fourth", "three_fourth", "slider", "testimonial", "progress", "person", "alert", "pricing_table", "recent_works", "tagline_box", "content_boxes", "recent_posts", "accordion", "hero", "well", "tooltip", "popover", "modal", "row");  
    return $buttons;  
 }  
 
 function add_plugin($plugin_array) { 
+   $plugin_array['youtube'] = get_template_directory_uri().'/tinymce/customcodes.js';
+   $plugin_array['vimeo'] = get_template_directory_uri().'/tinymce/customcodes.js';
    $plugin_array['soundcloud'] = get_template_directory_uri().'/tinymce/customcodes.js';
    $plugin_array['button'] = get_template_directory_uri().'/tinymce/customcodes.js';
-   $plugin_array['dropcap'] = get_template_directory_uri().'/tinymce/customcodes.js';
-   $plugin_array['highlight'] = get_template_directory_uri().'/tinymce/customcodes.js';
    $plugin_array['checklist'] = get_template_directory_uri().'/tinymce/customcodes.js';
    $plugin_array['tabs'] = get_template_directory_uri().'/tinymce/customcodes.js';
    $plugin_array['toggle'] = get_template_directory_uri().'/tinymce/customcodes.js';
@@ -36,11 +36,18 @@ function add_plugin($plugin_array) {
    $plugin_array['progress'] = get_template_directory_uri().'/tinymce/customcodes.js';
    $plugin_array['person'] = get_template_directory_uri().'/tinymce/customcodes.js';
    $plugin_array['alert'] = get_template_directory_uri().'/tinymce/customcodes.js';
-   $plugin_array['pricing_table'] = get_template_directory_uri().'/tinymce/customcodes.js';
+   //$plugin_array['pricing_table'] = get_template_directory_uri().'/tinymce/customcodes.js';
    $plugin_array['recent_works'] = get_template_directory_uri().'/tinymce/customcodes.js';
    $plugin_array['tagline_box'] = get_template_directory_uri().'/tinymce/customcodes.js';
    $plugin_array['content_boxes'] = get_template_directory_uri().'/tinymce/customcodes.js';
    $plugin_array['recent_posts'] = get_template_directory_uri().'/tinymce/customcodes.js';
+   $plugin_array['accordion'] = get_template_directory_uri().'/tinymce/customcodes.js';
+   $plugin_array['hero'] = get_template_directory_uri().'/tinymce/customcodes.js';
+   $plugin_array['well'] = get_template_directory_uri().'/tinymce/customcodes.js';
+   $plugin_array['tooltip'] = get_template_directory_uri().'/tinymce/customcodes.js';
+   $plugin_array['popover'] = get_template_directory_uri().'/tinymce/customcodes.js';
+   $plugin_array['modal'] = get_template_directory_uri().'/tinymce/customcodes.js';
+   $plugin_array['row'] = get_template_directory_uri().'/tinymce/customcodes.js';
    
    return $plugin_array;  
 } 
