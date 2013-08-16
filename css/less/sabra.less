@@ -20,6 +20,56 @@ iframe {
 
 // STYLING TWEAKS
 
-header {
-	margin-bottom: 1em;
+.content-grey-bg {
+	background: @grayLighter;
+	border-top: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	background: #ffffff; /* Old browsers */
+	background: -moz-linear-gradient(left,  #ffffff 0%, #f4f4f4 50%, #ffffff 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#ffffff), color-stop(50%,#f4f4f4), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #ffffff 0%,#f4f4f4 50%,#ffffff 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #ffffff 0%,#f4f4f4 50%,#ffffff 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #ffffff 0%,#f4f4f4 50%,#ffffff 100%); /* IE10+ */
+	background: linear-gradient(to right,  #ffffff 0%,#f4f4f4 50%,#ffffff 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
+
+}
+
+.content-section {
+	padding-top: 3em;
+	padding-bottom: 3em;
+	margin-bottom: 2em;
+}
+
+// SOCIAL MEDIA LINKS
+
+.social-link {
+	display: block;
+	width: 50px;
+	height: 50px;
+	background-image: url({$themeurl}/images/social-media-sprite.png);
+}
+
+.social-link.facebook {
+	background-position: top left;
+}
+
+.social-link.twitter {
+	background-position: top left;
+}
+
+.social-link.linkedin {
+	background-position: top left;
+}
+
+.social-link.yelp {
+	background-position: top left;
+}
+
+.social-link.youtube {
+	background-position: top left;
+}
+
+.social-link.vimeo {
+	background-position: top left;
 }

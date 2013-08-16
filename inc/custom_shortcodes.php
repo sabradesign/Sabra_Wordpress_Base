@@ -54,23 +54,51 @@ function sabra_row( $atts, $content = null ) {
 	$class != '' ? $classes = ' '.$class : $classes = '';
 		
 	$output = '';
+	$output .= '<div class="'.$classes.'">';
 	
 	if ( $fluid == 'yes' ) {
-		$output .= '<div class="container-fluid'.$classes.'">';
+		
+		$output .= '<div class="container-fluid">';
 		$output .= '<div class="row-fluid">';
 	} else {
-		$output .= '<div class="row'.$classes.'">';
+		$output .= '<div class="container">';
+		$output .= '<div class="row">';
 	}
 	
 	$output .= apply_filters( 'the_content', do_shortcode( $content ) );
 	$output .= '</div>';
 	
-	if ( $fluid == 'yes' ) $output .= '</div>';
+	$output .= '</div></div>';
 	
 	return $output;
 		
 }
 add_shortcode( 'row', 'sabra_row');
+
+/*
+Shortcode Name:  Create Bootstrap One Full Div
+Shortcode Syntax: [one_full class=""]
+Variable:
+	class = Additional Classes  Default: ''
+*/
+function sabra_one_full( $atts, $content = null ) {
+	
+	extract( shortcode_atts( array(
+			'class'	=>	''
+		), $atts ) );
+		
+	$class != '' ? $classes = ' '.$class : $classes = '';
+		
+	$output = '';
+	
+	$output .= '<div class="span12'.$classes.'">';
+	$output .= apply_filters( 'the_content', do_shortcode( $content ) );
+	$output .= '</div>';
+	
+	return $output;
+		
+}
+add_shortcode( 'one_full', 'sabra_one_full');
 
 /*
 Shortcode Name:  Create Bootstrap One Half Div
@@ -199,44 +227,80 @@ add_shortcode( 'three_fourth', 'sabra_three_fourth');
 
 //////////////////////////////////////////////////////////////////
 // Slider
-// [slider height="" width="" class=""]
+// [slider height="" width="" class="" group=""]
 //////////////////////////////////////////////////////////////////
 function slider_function( $atts, $content = null ) {
 	extract( shortcode_atts( array(
-			'height'	=> '400',
-			'width'		=>	'940',
+			'height'	=> '400px',
+			'width'		=>	'940px',
 			'size'		=>	'',
 			'class'		=>	'',
 			'nav'		=>	true,
-			'style'		=>	''
+			'style'		=>	'',
+			'group'		=>	''
 		), $atts ) );
 	
 	switch( $size ) {
 		case 'full':
-			$width = '940';
-			$height = '400';
+			$width = '940px';
+			$height = '400px';
 			break;
 		case 'half':
-			$width = '470';
-			$height = '470';
+			$width = '470px';
+			$height = '470px';
 			break;
 		case 'third':
-			$width = '300';
-			$height = '300';
+			$width = '300px';
+			$height = '300px';
 			break;
 	}
 	
 	$class != '' ? $classes = ' '.$class : $classes = '';
 	
 	$output = '';
-	$output .= '<div class="content-flexslider'.$classes.'" style="position: relative;max-width:'.$width.'px;'.$style.'">';
+	$output .= '<div class="content-flexslider'.$classes.'" style="position: relative;max-width:'.$width.';'.$style.'">';
 	$output .= '<ul class="slides">';
 	
-	$output .= do_shortcode( $content );
+	if ( isset( $group ) ) {
 	
-// 	$output .= '</ul>';
-// 	if ( $nav ) $output .= '<ul class="sabra-direction-nav"><li><a class="sabra-wooslider-prev" href="#" style="display: none; "></a></li><li><a class="sabra-wooslider-next" href="#" style="display: none; "></a></li></ul>';
-// 	$output .= '</div>';
+		$args = array(
+			'post_type' => 'slides',
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'slide-groups',
+					'field' => 'slug',
+					'terms' => $group
+				)
+			)
+		);
+		$slides = new WP_Query( $args );
+		
+		if ( $slides->have_posts() ) {
+		
+			while ( $slides->have_posts() ) {
+				$slides->the_post();
+				
+				$output .= '<li>';
+				$output .= apply_filters( 'the_content', get_the_content() );
+				$output .= '</li>';
+			
+			}
+		
+		}
+	
+	} else {
+	
+		
+	
+		$output .= do_shortcode( $content );
+	
+		
+	// 	if ( $nav ) $output .= '<ul class="sabra-direction-nav"><li><a class="sabra-wooslider-prev" href="#" style="display: none; "></a></li><li><a class="sabra-wooslider-next" href="#" style="display: none; "></a></li></ul>';
+
+	}
+	
+	$output .= '</ul>';
+	$output .= '</div>';
 	
 	return $output;
 }
@@ -625,6 +689,8 @@ function shortcode_image_function( $atts, $inner_content = null ) {
 		'crop_from_position'	=>	$crop_from	
 	);
 	
+	if ( $inner_content != '' ) $src = do_shortcode( $inner_content );
+	
 	$thumb_src = wpthumb( $src, $img_args );
 	$class != '' ? $classes = ' '.$class : $classes = '';
 	
@@ -642,7 +708,7 @@ add_shortcode( 'image', 'shortcode_image_function' );
 
 //////////////////////////////////////////////////////////////////
 // Latest Blog Post Shortcode
-// [latest_posts cat="" post_type="" number="" class=""][/latest_post]
+// [latest_posts cat="" post_type="" number="" class="" order=""][/latest_post]
 //////////////////////////////////////////////////////////////////
 add_shortcode('latest_posts', 'shortcode_latest_post');
 	function shortcode_latest_post($atts, $content) {
@@ -651,7 +717,8 @@ add_shortcode('latest_posts', 'shortcode_latest_post');
 				'cat' => '',
 				'post_type'	=>	'',
 				'number'	=>	1,
-				'class'		=>	''
+				'class'		=>	'',
+				'order'		=>	'DESC'
 			), $atts);
 		extract( $atts );
 		
@@ -660,48 +727,52 @@ add_shortcode('latest_posts', 'shortcode_latest_post');
 		$class != '' ? $classes = ' '.$class : $classes = '';
 		
 		$output .= '<div class="latest_posts_container'.$classes.'">';
-		$output .= '<ul class="thumbnails">';
+		if ( $content == '' ) $output .= '<ul class="thumbnails">';
 		
 		$latest_post_args = array(
 			'posts_per_page'	=>	$number,
 			'category_name'	=>	$cat,
-			'post__in'			=>	get_option('sticky_posts')
+			'post__in'			=>	get_option('sticky_posts'),
+			'order'			=>	$order
 		);
 		
 		$latest_post = new WP_Query( $latest_post_args );
 		
 		if ( $latest_post->have_posts() ) {
 			
-			$latest_post->the_post();
+			while ( $latest_post->have_posts() ) {
+							
+				$latest_post->the_post();
 			
-			if ( $content != '' ) {
-				$output .= do_shortcode($content);
-			} else {
-			
-				$output .= '<li>';
-				$output .= '<div class="row-fluid">';
-				if ( has_post_thumbnail() ) {
-					$output .= '<a href="'.get_permalink().'" class="thumbnail span6">';
-					$output .= get_the_post_thumbnail( get_the_ID() );
-					$output .= '</a>';
-					
-					$output .= '<div class="span6">';
+				if ( $content != '' ) {
+					$output .= do_shortcode($content);
 				} else {
-					$output .= '<div class="span12">';
-				}
-				
-				$output .= '<div class="caption">';
-				
-				$output .= '<h3>'.get_the_title().'</h3>';
-				$output .= '<p>'.get_the_excerpt().'</p>';
-				$output .= '<a href="'.get_permalink().'" title="'.get_the_title().'" class="read-more">Read More &rarr;</a>';
-				
-				$output .= '</div>';
-				$output .= '</div>';
-				
-				$output .= '</div>';
-				$output .= '</li>';
 			
+					$output .= '<li>';
+					$output .= '<div class="row-fluid">';
+					if ( has_post_thumbnail() ) {
+						$output .= '<a href="'.get_permalink().'" class="thumbnail span6">';
+						$output .= get_the_post_thumbnail( get_the_ID() );
+						$output .= '</a>';
+					
+						$output .= '<div class="span6">';
+					} else {
+						$output .= '<div class="span12">';
+					}
+				
+					$output .= '<div class="caption">';
+				
+					$output .= '<h3>'.get_the_title().'</h3>';
+					$output .= '<p>'.get_the_excerpt().'</p>';
+					$output .= '<a href="'.get_permalink().'" title="'.get_the_title().'" class="read-more">Read More &rarr;</a>';
+				
+					$output .= '</div>';
+					$output .= '</div>';
+				
+					$output .= '</div>';
+					$output .= '</li>';
+			
+				}
 			}
 		
 		} else {
@@ -715,36 +786,40 @@ add_shortcode('latest_posts', 'shortcode_latest_post');
 			
 			if ( $latest_post->have_posts() ) {
 			
-				$latest_post->the_post();
+				while ( $latest_post->have_posts() ) {
+				
+					$latest_post->the_post();
 			
-				if ( $content != '' ) {
-					$output .= do_shortcode($content);
-				} else {
+					if ( $content != '' ) {
+						$output .= do_shortcode($content);
+					} else {
 				
-				$output .= '<li>';
-				$output .= '<div class="row-fluid">';
+						$output .= '<li>';
+						$output .= '<div class="row-fluid">';
 				
-				if ( has_post_thumbnail() ) {
-					$output .= '<a href="'.get_permalink().'" class="thumbnail span6">';
-					$output .= get_the_post_thumbnail( get_the_ID() );
-					$output .= '</a>';
+						if ( has_post_thumbnail() ) {
+							$output .= '<a href="'.get_permalink().'" class="thumbnail span6">';
+							$output .= get_the_post_thumbnail( get_the_ID() );
+							$output .= '</a>';
 					
-					$output .= '<div class="span6">';
-				} else {
-					$output .= '<div class="span12">';
-				}
+							$output .= '<div class="span6">';
+						} else {
+							$output .= '<div class="span12">';
+						}
 				
-				$output .= '<div class="caption">';
+						$output .= '<div class="caption">';
 				
-				$output .= '<h3>'.get_the_title().'</h3>';
-				$output .= '<p>'.get_the_excerpt().'</p>';
-				$output .= '<a href="'.get_permalink().'" title="'.get_the_title().'" class="read-more">Read More &rarr;</a>';
+						$output .= '<h3>'.get_the_title().'</h3>';
+						$output .= '<p>'.get_the_excerpt().'</p>';
+						$output .= '<a href="'.get_permalink().'" title="'.get_the_title().'" class="read-more">Read More &rarr;</a>';
 				
-				$output .= '</div>';
-				$output .= '</div>';
+						$output .= '</div>';
+						$output .= '</div>';
 				
-				$output .= '</div>';
-				$output .= '</li>';					
+						$output .= '</div>';
+						$output .= '</li>';					
+				
+					}
 				
 				}
 		
@@ -754,7 +829,9 @@ add_shortcode('latest_posts', 'shortcode_latest_post');
 		
 		wp_reset_postdata();
 		
-		$output .= '</ul></div>';
+		if ( $content == '' ) $output .= '</ul>';
+		
+		$output .= '</div>';
 		
 		return $output;
 
@@ -767,10 +844,41 @@ add_shortcode('latest_posts', 'shortcode_latest_post');
 //////////////////////////////////////////////////////////////////
 add_shortcode('latest_post_title', 'shortcode_latest_post_title');
 	function shortcode_latest_post_title($atts, $content) {
+		$atts = shortcode_atts(
+			array(
+				'link' => 'yes'
+			), $atts);
+		extract( $atts );
 		
 		global $post;
 		
-		return esc_html( $post->post_title );
+		$output = '';
+		
+		$title = esc_html( $post->post_title );
+		
+		if ( $link == 'yes' ) {
+			$output .= '<a href="'.get_permalink( $post->ID ).'" title="'.$title.'">';
+			$output .= $title.'</a>';
+		} else {
+			$output .= $title;
+		}
+		
+		return $output;
+			
+	}
+	
+//////////////////////////////////////////////////////////////////
+// Latest Blog Post Read More Link
+// [latest_read_more]
+//////////////////////////////////////////////////////////////////
+add_shortcode('latest_read_more', 'shortcode_latest_read_more');
+	function shortcode_latest_read_more($atts, $content) {
+		
+		global $post;
+		
+		$output = '<a href="'.get_permalink( $post->ID ).'" title="'.esc_html( $post->post_title ).'" class="read-more">Read More &rarr;</a>';
+		
+		return $output;
 			
 	}
 	
@@ -799,50 +907,46 @@ add_shortcode('latest_post_excerpt', 'shortcode_latest_post_excerpt');
 			
 	}
 	
+
+	
 //////////////////////////////////////////////////////////////////
 // Latest Blog Post Image URL Shortcode
 // [latest_post_thumb_url]
 //////////////////////////////////////////////////////////////////
-// add_shortcode('latest_post_thumb_url', 'shortcode_latest_post_thumbnail_img_url');
-// 	function shortcode_latest_post_thumbnail_img_url($atts, $content) {
-// 		
-// 		global $post;
-// 		
-// 		if ( has_post_thumbnail( $post->ID ) ) {
-// 		
-// 			$id = get_post_thumbnail_id();
-// 			$thumb_src = wp_get_attachment_image_src( $id, 'full' );
-// 			$image_url = $thumb_src[0];
-// 			$image_url = timthumb_photo( $image_url, 300, 300, '', false);
-// 		
-// 		} elseif( $youtubeID = get_post_meta( $post->ID, 'DALDELLO_youtube_id',  true ) ) {
-// 		
-// 			$image_url = timthumb_photo('http://img.youtube.com/vi/' . $youtubeID . '/hqdefault.jpg', 300, 300, '', false);
-// 			
-// 		} else {
-// 			$args = array(
-// 				'post_type' => 'attachment',
-// 				'numberposts' => 1,
-// 				'post_status' => null,
-// 				'post_parent' => $post->ID,
-// 				'orderby'	=>	'menu_order',
-// 				'order'		=>	'ASC'
-// 			);
-// 			$attachments = get_posts($args);
-// 			if ($attachments) {
-// 				$attachment = $attachments[0];
-// 				$thumb_src = wp_get_attachment_image_src( $attachment->ID, 'full' );
-// 				$image_url = $thumb_src[0];
-// 				$image_url = timthumb_photo( $image_url, 300, 300, '', false);
-// 				
-// 			} else {	
-// 				return false;
-// 			}
-// 		}
-// 		
-// 		return $image_url;
-// 			
-// 	}
+add_shortcode('latest_post_thumb_url', 'shortcode_latest_post_thumbnail_img_url');
+	function shortcode_latest_post_thumbnail_img_url($atts, $content) {
+		
+		global $post;
+		
+		if ( has_post_thumbnail( $post->ID ) ) {
+		
+			$id = get_post_thumbnail_id();
+			$thumb_src = wp_get_attachment_image_src( $id, 'full' );
+			$image_url = $thumb_src[0];
+
+		} else {
+			$args = array(
+				'post_type' => 'attachment',
+				'numberposts' => 1,
+				'post_status' => null,
+				'post_parent' => $post->ID,
+				'orderby'	=>	'menu_order',
+				'order'		=>	'ASC'
+			);
+			$attachments = get_posts($args);
+			if ($attachments) {
+				$attachment = $attachments[0];
+				$thumb_src = wp_get_attachment_image_src( $attachment->ID, 'full' );
+				$image_url = $thumb_src[0];
+				
+			} else {	
+				return false;
+			}
+		}
+		
+		return $image_url;
+			
+	}
 
 //////////////////////////////////////////////////////////////////
 // Company Address
@@ -907,5 +1011,146 @@ function shortcode_company_address_function( $atts, $inner_content = null ) {
 	return $output;
 }
 add_shortcode( 'company_address', 'shortcode_company_address_function' );
+
+//////////////////////////////////////////////////////////////////
+// Get Post Meta Data
+// [post_meta key=""]
+//////////////////////////////////////////////////////////////////
+add_shortcode('post_meta', 'shortcode_post_meta');
+	function shortcode_post_meta($atts, $content) {
+		$atts = shortcode_atts(
+			array(
+				'key' => ''
+			), $atts);
+		extract( $atts );
+		
+		
+		global $post;
+		
+		$output = get_post_meta( $post->ID, $key, true );
+		
+		return $output;
+			
+	}
+	
+//////////////////////////////////////////////////////////////////
+// Show Person or User
+// [person username="" name=""]
+//////////////////////////////////////////////////////////////////
+add_shortcode('person', 'shortcode_person');
+	function shortcode_person($atts, $content) {
+		$atts = shortcode_atts(
+			array(
+				'username' => '',
+				'name'		=>	'',
+				'image'		=>	''
+			), $atts);
+		extract( $atts );
+		
+		$output = '';
+		
+		if ( isset( $username ) ) {
+		
+			$user = get_user_by( 'login', $username );
+			
+			if ( $user ) {
+		
+				$output .= '<div class="person '.$username.'">';
+		
+				if ( $content != '' ) {
+				
+					global $displayed_user;
+					$displayed_user = $user;
+					// display custom formatting
+					$output .= do_shortcode( $content );
+					
+				} else {
+					// display general formatting
+				
+					// Get gravatar
+					$email = $user->user_email;
+					$default = "http://sabradesign.me/wp-content/uploads/2012/12/sabra-design-logo.jpg";
+					$size = 288;
+					$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+					$output .= '<div class="user-avatar"><img src="'.$grav_url.'" alt="'.$user->first_name.' '.$user->last_name.'"></div>';
+					
+					// Get User Info
+					$meta = get_user_meta( $user->ID );
+					$output .= '<div class="person-info">';
+					$output .= '<h5>'.$user->first_name.' '.$user->last_name.'</h5>';
+					isset( $meta['description'] ) ? $output .= '<div class="user-bio">'.$meta['description'][0].'</div>' : $output .= '' ;
+					
+					$output .= '</div>';
+				
+				}
+			
+			}
+		
+		} else {
+			//display general formatting
+			
+			$output .= '<div class="person">';
+		}
+		
+		$output .= '</div>';
+		
+		return $output;
+			
+	}
+
+//////////////////////////////////////////////////////////////////
+// Get User Meta Data
+// [user_meta username="" key=""]
+//////////////////////////////////////////////////////////////////
+add_shortcode('user_meta', 'shortcode_user_meta');
+	function shortcode_user_meta($atts, $content) {
+		$atts = shortcode_atts(
+			array(
+				'username'	=>	'',
+				'key' => ''
+			), $atts);
+		extract( $atts );
+		
+		if ( isset( $username ) ) {
+			$user = get_user_by( 'login', $username );
+		} else {
+			global $displayed_user;
+			$user = $displayed_user;
+		}
+		
+		$output = get_user_meta( $user->ID, $key, true );
+		
+		return $output;
+			
+	}
+	
+//////////////////////////////////////////////////////////////////
+// Get User Gravatar
+// [user_gravatar email="" size=""]
+//////////////////////////////////////////////////////////////////
+add_shortcode('user_gravatar', 'shortcode_user_gravatar');
+	function shortcode_user_gravatar($atts, $content) {
+		$atts = shortcode_atts(
+			array(
+				'email'	=>	'',
+				'size' => '288'
+			), $atts);
+		extract( $atts );
+		
+		if ( !isset( $email) ) {
+		
+			global $displayed_user;
+			$email = $displayed_user->user_email;
+		
+		}
+		
+		$default = "http://sabradesign.me/wp-content/uploads/2012/12/sabra-design-logo.jpg";
+		$grav_url = "http://www.gravatar.com/avatar/" . md5( strtolower( trim( $email ) ) ) . "?d=" . urlencode( $default ) . "&s=" . $size;
+		
+		$output = '<img src="'.$grav_url.'">';
+		
+		return $output;
+			
+	}
 
 ?>

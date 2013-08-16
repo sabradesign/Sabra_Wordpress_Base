@@ -3,14 +3,6 @@
 // INCLUDE NECESSARY PHP FILES
 
 /**
- * wp-less
- * https://github.com/sanchothefat/wp-less
- */
-if ( ! class_exists( 'wp_less' ) ) {
-    require_once( 'wp-less.php' );
-}
-
-/**
  * wpthumb
  * https://github.com/humanmade/WPThumb
  */
@@ -41,7 +33,6 @@ function register_required_plugins() {
 		array(
 			'name'     				=> 'Meta Box Plugin', // The plugin name
 			'slug'     				=> 'meta-box', // The plugin slug (typically the folder name)
-			'source'   				=> get_stylesheet_directory() . '/inc/plugins/meta-box.zip', // The plugin source
 			'required' 				=> true, // If false, the plugin is only 'recommended' instead of required
 			'force_activation' 		=> true // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
 		),
@@ -57,6 +48,12 @@ function register_required_plugins() {
 		array(
 			'name' 		=> 'SEO Ultimate',
 			'slug' 		=> 'seo-ultimate',
+			'required' 	=> true,
+			'force_activation' 		=> true
+		),
+		array(
+			'name' 		=> 'WP Less',
+			'slug' 		=> 'wp-less',
 			'required' 	=> true,
 			'force_activation' 		=> true
 		),
@@ -89,6 +86,26 @@ function register_required_plugins() {
 		array(
 			'name'		=>	'W3 Total Cache',
 			'slug'		=>	'w3-total-cache',
+			'required'	=>	false
+		),
+		array(
+			'name'		=>	'Disqus Commenting System',
+			'slug'		=>	'disqus-comment-system',
+			'required'	=>	false
+		),
+		array(
+			'name'		=>	'Developer',
+			'slug'		=>	'developer',
+			'required'	=>	false
+		),
+		array(
+			'name'		=>	'Debug Bar',
+			'slug'		=>	'debug-bar',
+			'required'	=>	false
+		),
+		array(
+			'name'		=>	'What The Bar',
+			'slug'		=>	'what-the-bar',
 			'required'	=>	false
 		),
 		array(

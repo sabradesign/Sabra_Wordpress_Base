@@ -45,9 +45,41 @@ function custom_taxonomies() {
 // 		   'update_count_callback'   => '_update_post_term_count',
 // 		   'query_var'               => true,
 // 		   'rewrite'                 => array( 'slug' => 'cards-tax' )  // Used for permalink rewriting on the index of this tax
-// 		 );
+// 		 )
 // 		 
 //  	 );
+
+ 	$custom_taxes[] = array(
+		'slug'			=>	'sliders',	// The unique slug of the taxonomy
+		'post_types'	=>	array( 'slides' ),	// Which post types should this taxonomy be used for
+		'args'			=>	array(
+		   'hierarchical'            => true,	// Whether this should behave like categories or tags
+		   'labels'                  => array(
+		   		'name'                         => _x( 'Sliders', 'taxonomy general name' ),
+				'singular_name'                => _x( 'Slider', 'taxonomy singular name' ),
+				'search_items'                 => __( 'Search Sliders' ),
+				'popular_items'                => __( 'Popular Sliders' ),
+				'all_items'                    => __( 'All Sliders' ),
+				'parent_item'                  => null,
+				'parent_item_colon'            => null,
+				'edit_item'                    => __( 'Edit Slider' ), 
+				'update_item'                  => __( 'Update Slider' ),
+				'add_new_item'                 => __( 'Add New Slider' ),
+				'new_item_name'                => __( 'New Slider Name' ),
+				'separate_items_with_commas'   => __( 'Separate Sliders with commas' ),
+				'add_or_remove_items'          => __( 'Add or remove Sliders' ),
+				'choose_from_most_used'        => __( 'Choose from the most used Sliders' ),
+				'not_found'                    => __( 'No Sliders found.' ),
+				'menu_name'                    => __( 'Sliders' )
+		   ),
+		   'show_ui'                 => true,	// Whether this taxonomy should be visible in the WP back end
+		   'show_admin_column'       => true,
+		   'update_count_callback'   => '_update_post_term_count',
+		   'query_var'               => true,
+		   'rewrite'                 => array( 'slug' => 'slide-groups' )  // Used for permalink rewriting on the index of this tax
+		 )
+		 
+ 	 );
  	 
  	 foreach( $custom_taxes as $tax ) {
  	 

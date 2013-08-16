@@ -6,8 +6,6 @@
  */
 
 get_header(); ?>
-	<div class="container">
-		<div class="row">
 			<div id="primary">
 				<div id="content" role="main">
 
@@ -17,7 +15,7 @@ get_header(); ?>
 					<?php while ( have_posts() ) : the_post(); ?>
 
 						<?php //the_content(); ?>
-						<?php get_template_part( 'content', get_post_format() ); ?>
+						<?php get_template_part( 'content', 'page' ); ?>
 
 					<?php endwhile; ?>
 
@@ -36,7 +34,6 @@ get_header(); ?>
 
 				<?php endif; ?>
 
-				</div><!-- #content -->
-		</div>
-	</div>
+				</div><!-- end #content -->
+		</div><!-- end #primary -->
 <?php get_footer(); ?>

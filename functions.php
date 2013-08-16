@@ -119,4 +119,6 @@ function sabra_enqueue_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'sabra_enqueue_scripts_styles' );
 
+remove_filter('the_content', 'wpautop');
+
 ?>
