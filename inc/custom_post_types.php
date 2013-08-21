@@ -103,7 +103,7 @@ function add_custom_post_types() {
 	foreach( $custom_post_types as $custom_post_type ) {	
 		register_post_type( $custom_post_type['name'], $custom_post_type['args'] );
 		
-		if ( $custom_post_type['parallel-tax'] ) {
+		if ( isset($custom_post_type['parallel-tax']) && $custom_post_type['parallel-tax'] ) {
 		
 			if ( is_array( $parallel_taxes ) ) {
 			
@@ -217,7 +217,7 @@ function create_parallel_tax( $post_id, $post ) {
 	
 	$parallel_taxes = get_option( 'sabra_parallel_tax' );
 	
-	if ( in_array( $post->post_type, $parallel_taxes ) ) {
+	if ( is_array( $parallel_taxes ) && in_array( $post->post_type, $parallel_taxes ) ) {
 		
 		$term_args = array(
 			'description'	=>	$post->post_title,
@@ -276,7 +276,7 @@ function delete_parallel_tax( $post_id ) {
 	
 	$parallel_taxes = get_option( 'sabra_parallel_tax' );
 	
-	if ( in_array( $postType, $parallel_taxes ) ) {
+	if ( is_array( $parallel_taxes) && in_array( $postType, $parallel_taxes ) ) {
 		
 		if ( $term = get_term_by( 'slug', $post_id, $post->post_type.'-tax' ) ) {
 			wp_delete_term( $term_id->term_id, $postType.'-tax' );
