@@ -67,42 +67,8 @@ function sabra_enqueue_scripts_styles() {
 	
 	// CSS Style Name: Retina
 	$styles[] = array(
-		'handle'	=>	'bootstrap',
-		'src'		=>	get_template_directory_uri() . '/css/less/bootstrap.less',
-		'dependencies'	=>	null,
-		'version'		=>	'0.1',
-		'media'			=>	'all'
-	);
-	
-	// CSS Style Name: Retina
-	$styles[] = array(
-		'handle'	=>	'retina',
-		'src'		=>	get_template_directory_uri() . '/css/retina.css',
-		'dependencies'	=>	null,
-		'version'		=>	'0.1',
-		'media'			=>	'screen'
-	);
-	
-	// CSS Style Name: Flexslider CSS
-	$styles[] = array(
-		'handle'	=>	'flexslidr',
-		'src'		=>	get_template_directory_uri() . '/js/flexslider/flexslider.css',
-		'dependencies'	=>	null,
-		'version'		=>	'2.0',
-		'media'			=>	'screen'
-	);
-	
-	// CSS Style Name: Fancybox CSS
-	$styles[] = array(
-		'handle'	=>	'fancybox',
-		'src'		=>	get_template_directory_uri() . '/js/fancybox/jquery.fancybox.css'
-	);
-	
-	// CSS Style Name: Fancybox Helper Thumbnails CSS
-	$styles[] = array(
-		'handle'	=>	'fancybox-thumb',
-		'src'		=>	get_template_directory_uri() . '/js/fancybox/helpers/jquery.fancybox-thumbs.css',
-		'dependencies'	=>	array('fancybox')
+		'handle'	=>	'main',
+		'src'		=>	get_template_directory_uri() . '/css/style.less'
 	);
 	
 	// ADD THE STYLES AND SCRIPS FUNCTIONS
