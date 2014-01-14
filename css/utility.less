@@ -1,0 +1,224 @@
+* { 
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+	box-sizing: border-box;         /* Opera/IE 8+ */
+}
+
+.section {
+
+	padding: @paddingLarge;
+	position: relative;
+	
+	&.gray-border {
+		border-left-width: 0px;
+		border-right-width: 0px;
+	}
+
+}
+
+.gray-border {
+	border: 2px solid @grayLighter;
+}
+
+.gray-bg {
+	background-color: lighten( @grayLighter, 5% );
+	box-shadow: inset 0px 0px 100px @grayLighter;
+}
+
+.invert {
+	background-color: @grayDark;
+	color: @grayLighter;
+	
+	.bottom-divider {
+		border-color: @grayLighter;
+	}
+}
+
+.small-divider {
+	position: relative;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+	
+	&:after {
+		height: 1px;
+		position: absolute;
+		bottom: 0;
+		left: 45%;
+		right: 45%;
+		content: ' ';
+		background-color: @grayLighter;
+	}
+}
+
+.bottom-divider {
+	margin-bottom: 10px;
+	border-bottom: 1px solid @grayDarker;
+
+}
+
+.divider-button {
+
+	position: absolute;
+	bottom: -15px;
+	left: 0;
+	right: 0;
+	text-align: center;
+	z-index: 100;
+
+	a {
+		.btn;
+	}
+
+}
+
+.parallax-cloud-border-orange {
+
+	margin-top: 40px;
+	margin-bottom: 40px;
+	position: relative;
+
+	&:before {
+	
+		background-color: @primaryColor;
+		background-image: url( @{stylesheet_directory_uri}/images/cloud-watermark.png );
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-attachment: fixed;
+		background-size: 90%;
+		height: 40px;
+		position: absolute;
+		top: -40px;
+		left: 0px;
+		right: 0px;
+		content: ' ';
+		.box-shadow( inset 0px -5px 5px @grayDarker );
+	
+	}
+	
+	&:after {
+	
+		background-color: @primaryColor;
+		background-image: url( @{stylesheet_directory_uri}/images/cloud-watermark.png );
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-attachment: fixed;
+		background-size: 90%;
+		height: 40px;
+		position: absolute;
+		bottom: -40px;
+		right: 0px;
+		left: 0px;
+		content: ' ';
+		.box-shadow( inset 0px -5px 5px @grayDarker );
+	
+	}
+
+}
+
+.logo-slider {
+
+	border-top: 1px solid @grayLighter;
+	border-bottom: 1px solid @grayLighter;
+	position: relative;
+	
+	h3 {
+		position: absolute;
+		left: 0;
+		top: -30px;
+		background-color: @white;
+		padding-right: 20px;
+		z-index: 10;
+	}
+	
+	.logo {
+		position: relative;
+		min-height: 130px;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		
+		&:after {
+			position: absolute;
+			width: 1px;
+			right: 0;
+			top: 10%;
+			bottom: 10%;
+			background-color: @grayLighter;
+			content: ' ';
+		}
+		
+		&:last-child {
+		
+			&:after {
+				display: none;
+			}
+		
+		}
+		
+		a[class*="partner"] {
+		
+			display: block;
+			position: absolute;
+			left: 0;
+			right: 0;
+			top: 0;
+			bottom: 0;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: 100%;
+		
+		}
+		
+		a.partner-1 {
+			background-image: url(@{stylesheet_directory_uri}/images/placeholder/partner-1.png);
+		}
+		
+		a.partner-2 {
+			background-image: url(@{stylesheet_directory_uri}/images/placeholder/partner-2.png);
+		}
+		
+		a.partner-3 {
+			background-image: url(@{stylesheet_directory_uri}/images/placeholder/partner-3.png);
+		}
+		
+		a.partner-4 {
+			background-image: url(@{stylesheet_directory_uri}/images/placeholder/partner-4.png);
+		}
+		
+		a.partner-5 {
+			background-image: url(@{stylesheet_directory_uri}/images/placeholder/partner-5.png);
+		}
+		
+		a.partner-6 {
+			background-image: url(@{stylesheet_directory_uri}/images/placeholder/partner-6.png);
+		}
+		
+		a.affiliation-1 {
+			background-image: url(@{stylesheet_directory_uri}/images/placeholder/affiliations-1.png);
+		}
+		
+		a.affiliation-2 {
+			background-image: url(@{stylesheet_directory_uri}/images/placeholder/affiliations-2.png);
+		}
+		
+		a.affiliation-3 {
+			background-image: url(@{stylesheet_directory_uri}/images/placeholder/affiliations-3.png);
+		}
+		
+		a.affiliation-4 {
+			background-image: url(@{stylesheet_directory_uri}/images/placeholder/affiliations-4.png);
+		}
+	}
+
+}
+
+.white-badge {
+	padding: 5px;
+	background: @white;
+	border-radius: 5px;
+	margin: 5px;
+	display: block;
+	
+	&:hover {
+		text-decoration: none;
+	}
+}

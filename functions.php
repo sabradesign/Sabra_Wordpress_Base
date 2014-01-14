@@ -78,7 +78,11 @@ function sabra_enqueue_scripts_styles() {
 	}
 	
 	foreach( $styles as $style ) {
-		wp_enqueue_style( $style['handle'], $style['src'], $style['dependencies'], $style['version'], $script['media'] );
+		isset( $style['dependencies'] ) ? $dependencies = $style['dependencies'] : $dependencies = false;
+		isset( $style['version'] ) ? $version = $style['version'] : $version = false;
+		isset( $style['media'] ) ? $media = $style['media'] : $media = false;
+		
+		wp_enqueue_style( $style['handle'], $style['src'], $dependencies, $version, $media );
 	}
 
     
