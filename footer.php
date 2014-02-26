@@ -1,6 +1,6 @@
 </div> <!-- end #main -->
 
-<footer>
+<footer id="main-footer" class="main-footer">
 	<div class="container">
 		<!-- Footer Content -->
 		<div class="row">
@@ -44,6 +44,19 @@
 			
 		</div>
 		<!-- End Footer Content -->
+	</div>
+</footer>
+
+<footer id="sub-footer" class="main-footer">
+	<div class="container">
+		<div class="row">
+			<div class="span6">
+				Social Media Icons Here
+			</div>
+			<div class="span6">
+				Footer Menu Here
+			</div>
+		</div>
 	</div>
 </footer>
 

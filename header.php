@@ -79,8 +79,39 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
+	<div id="utility-nav" class="navbar navbar-static-top">
+	  <div class="navbar-inner">
+	  	<div class="container">
+			
+			<ul class="social nav pull-left">
+				<li><a href="#">FB</a></li>
+				<li><a href="#">G+</a></li>
+				<li><a href="#">PI</a></li>
+				<li><a href="#">TW</a></li>
+				<li><a href="#">YT</a></li>
+			</ul>
+			
+			<ul class="nav lang-select pull-right">
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+						English
+						<b class="caret"></b>
+					  </a>
+					<ul class="dropdown-menu">
+					  <li><a href="?lang_switch=EN">English</a></li>
+					  <li><a href="?lang_switch=SP">Spanish</a></li>
+					</ul>
+				</li>
+			</ul>
+			
+			<div class="nav-collapse collapse">
+				
+			</div>
+		</div>
+	  </div>
+	</div>
 
-	<div class="navbar navbar-static-top">
+	<div id="main-nav" class="navbar navbar-static-top" data-spy="affix" data-offset-top="200">
 	  <div class="navbar-inner">
 	  	<div class="container">
 	  		<!-- .btn-navbar is used as the toggle for collapsed navbar content -->
@@ -90,10 +121,34 @@
 				<span class="icon-bar"></span>
 			  </a>
 	  	
-			<a class="brand" href="<?php bloginfo('wpurl'); ?>">Title</a>
+			<a class="brand" href="<?php bloginfo('wpurl'); ?>">
+				<img src="<?php echo get_stylesheet_directory_uri(); ?>/images/header-logo.png" alt="Socrates Connected" width=300 height=100/>
+			</a>
 			
-			<div class="nav-collapse collapse">
-				<?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav', 'container' => 'false', 'walker' => new sabra_walker_nav_menu ) ); ?>
+			<div class="nav-collapse collapse pull-right">
+				<?php //wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav', 'container' => 'false', 'walker' => new sabra_walker_nav_menu ) ); ?>
+				<ul id="menu-main-menu" class="nav">
+					<li id="menu-item-8" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-8 about">
+						<div class="icon"></div>
+						<a href="#">About</a>
+					</li>
+					<li id="menu-item-9" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-9 how-it-works">
+						<div class="icon"></div>
+						<a href="#">How It Works</a>
+					</li>
+					<li id="menu-item-10" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-10 course-catalog">
+						<div class="icon"></div>
+						<a href="#">Course Catalog</a>
+					</li>
+					<li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-11 contact">
+						<div class="icon"></div>
+						<a href="#">Contact</a>
+					</li>
+					<li id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12 search">
+						<div class="icon"></div>
+						<a href="#">Search</a>
+					</li>
+				</ul>
 			</div>
 		</div>
 	  </div>

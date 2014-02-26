@@ -129,6 +129,24 @@ jQuery(document).ready( function($) {
 	
 	});
 	
+// 	$('#courses-carousel').flexslider({
+// 		animation: "slide",
+// 		animationLoop: false,
+// 		itemWidth: 355,
+// 		itemMargin: 5,
+// 		minItems: 1,
+// 		maxItems: 3
+// 	  });
+// 	  
+// 	$('#course-category-carousel').flexslider({
+// 		animation: "slide",
+// 		animationLoop: false,
+// 		itemWidth: 170,
+// 		itemMargin: 5,
+// 		minItems: 1,
+// 		maxItems: 6
+// 	  });
+	
 	//BOOTSTRAP
 	$('a[data-toggle="tooltip"]').tooltip();
 	

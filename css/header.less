@@ -1,0 +1,149 @@
+// NAVBAR TWEAKS
+
+.navbar-inner {
+	background-image: none;
+	background-color: @white;
+}
+
+.navbar-fixed-top .navbar-inner, .navbar-static-top .navbar-inner {
+	.box-shadow( 0px 0px 0px );
+}
+
+header {
+	margin-bottom: 0px;
+}
+
+// MAIN NAV
+
+#main-nav {
+
+	width: 100%;
+	top: 0;
+	z-index: 99999;
+	
+	.transition( all .3s );
+	
+	.nav > li > a {
+	
+		width: 100px;
+		height: 100px;
+		text-align: center;
+		padding-top: 80px;
+		font-size: 8px;
+		text-transform: uppercase;
+		font-weight: bold;
+		color: @grayDark;
+		text-shadow: none;
+		padding-left: 0;
+		padding-right: 0;
+		line-height: 8px;
+		position: relative;
+		z-index: 100;
+		
+	
+	}
+	
+	.nav > li {
+		position: relative;
+		margin-top: 10px;
+		
+		&:hover {
+			background-color: @primaryColor;
+			
+			div.icon {
+				background-color: @white;
+				border-width: 4px;
+				left: 16px;
+				top: 6px;
+				background-image: url(@{stylesheet_directory_uri}/images/main-menu-sprite-sel.png);
+			}
+			
+			a {
+				color: @white;
+			}			
+		}
+		
+		div.icon {
+			position: absolute;
+			left: 20px;
+			top: 10px;
+			height: 60px;
+			width: 60px;
+			border-radius: 50%;
+			background-color: @primaryColor;
+			background-image: url(@{stylesheet_directory_uri}/images/main-menu-sprite.png);
+			border-width: 0px;
+			border-style: solid;
+			border-color: mix( @primaryColor, @white, 50% );
+			box-sizing: content-box;
+			-webkit-box-sizing: content-box;
+			-moz-box-sizing: content-box;
+		
+			//.transition( all .1s );
+		}
+		
+		&.about {
+			div.icon {
+				background-position: -20px -9px;
+			}
+		}
+		
+		&.how-it-works {
+			div.icon {
+				background-position: -120px -9px;
+			}
+		}
+		
+		&.course-catalog {
+			div.icon {
+				background-position: -20px -109px;
+			}
+		}
+		
+		&.contact {
+			div.icon {
+				background-position: -120px -109px;
+			}
+		}
+		
+		&.search {
+			div.icon {
+				background-position: -220px -9px;
+			}
+		}
+		
+	}
+	
+	&.affix {
+	
+		a.brand {
+			img {
+				height: 30px;
+				width: 90px;
+			}
+		}
+	
+		.nav > li > a {
+		
+			height: 50px;
+			background-image: none;
+			padding-top: 21px;
+			
+			
+		}
+		
+		.nav > li {
+			margin-top: 0px;
+			
+			div.icon {
+				display: none;
+			}
+		}
+	
+	}
+	
+}
+
+body.admin-bar #main-nav {
+	top: 28px;
+}
