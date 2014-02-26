@@ -1,0 +1,45 @@
+body.page-template-one-pager-php {
+
+	section {
+
+		padding: @paddingLarge;
+		padding-left: 0;
+		padding-right: 0;
+		padding-bottom: 66px;
+		position: relative;
+
+		&.parallax-breaker {
+
+			border-top: 30px solid @grayDark;
+			border-bottom: 30px solid @grayDark;
+			padding-bottom: 75px;
+			padding-top: 75px;
+			text-align: center;
+			color: @primaryColor;
+			font-size: 20px;
+			line-height: 2em;
+			text-shadow: 0px 0px 5px @white;
+			background-position: center center;
+			background-attachment: fixed;
+			background-repeat: no-repeat;
+			background-size: 2000px 2000px;
+	
+			p {
+				font-size: 20px;
+				line-height: 2em;
+				margin-bottom: 0;
+			}
+
+		}
+
+	}
+
+}
+
+body.touch {
+
+	.parallax-breaker {
+		background-attachment: scroll;
+	}
+
+}

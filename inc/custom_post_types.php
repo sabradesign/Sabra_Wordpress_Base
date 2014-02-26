@@ -279,7 +279,7 @@ function delete_parallel_tax( $post_id ) {
 	if ( is_array( $parallel_taxes) && in_array( $postType, $parallel_taxes ) ) {
 		
 		if ( $term = get_term_by( 'slug', $post_id, $post->post_type.'-tax' ) ) {
-			wp_delete_term( $term_id->term_id, $postType.'-tax' );
+			wp_delete_term( $term->term_id, $postType.'-tax' );
 		}
 	
 	} else {

@@ -34,7 +34,7 @@ function register_required_plugins() {
 			'name'     				=> 'Meta Box Plugin', // The plugin name
 			'slug'     				=> 'meta-box', // The plugin slug (typically the folder name)
 			'required' 				=> true, // If false, the plugin is only 'recommended' instead of required
-			'force_activation' 		=> true // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
+			'force_activation' 		=> false // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch
 		),
 		
 		// USER META
@@ -44,18 +44,52 @@ function register_required_plugins() {
 			'source'   				=> get_stylesheet_directory() . '/inc/plugins/user-meta.zip' // The plugin source
 		),
 
+		// BACKUPBUDDY
+		array(
+			'name'     				=> 'Backup Buddy', // The plugin name
+			'slug'     				=> 'backupbuddy', // The plugin slug (typically the folder name)
+			'source'   				=> get_stylesheet_directory() . '/inc/plugins/backupbuddy.zip', // The plugin source
+			'required'				=>	true
+		),
+		
+		// WPML
+		array(
+			'name'     				=> 'WP MultiLingual', // The plugin name
+			'slug'     				=> 'sitepress-multilingual-cms', // The plugin slug (typically the folder name)
+			'source'   				=> get_stylesheet_directory() . '/inc/plugins/sitepress-multilingual-cms.zip' // The plugin source
+		),
+		
+		// WPML String Translation
+		array(
+			'name'     				=> 'WP MultiLingual - String Translation Expansion', // The plugin name
+			'slug'     				=> 'wpml-string-translation', // The plugin slug (typically the folder name)
+			'source'   				=> get_stylesheet_directory() . '/inc/plugins/wpml-string-translation.zip' // The plugin source
+		),
+
 		// This is an example of how to include a plugin from the WordPress Plugin Repository
 		array(
 			'name' 		=> 'SEO Ultimate',
 			'slug' 		=> 'seo-ultimate',
-			'required' 	=> true,
-			'force_activation' 		=> true
+			'required' 	=> false,
+			'force_activation' 		=> false
+		),
+		array(
+			'name' 		=> 'Google Analyticator',
+			'slug' 		=> 'google-analyticator'
+		),
+		array(
+			'name' 		=> 'Maintenance Mode',
+			'slug' 		=> 'maintenance-mode'
+		),
+		array(
+			'name' 		=> 'Word Fence',
+			'slug' 		=> 'wordfence'
 		),
 		array(
 			'name' 		=> 'WP Less',
 			'slug' 		=> 'wp-less',
 			'required' 	=> true,
-			'force_activation' 		=> true
+			'force_activation' 		=> false
 		),
 		array(
 			'name'		=>	'Contact Form 7',
@@ -106,11 +140,6 @@ function register_required_plugins() {
 		array(
 			'name'		=>	'What The Bar',
 			'slug'		=>	'what-the-bar',
-			'required'	=>	false
-		),
-		array(
-			'name'		=>	'Disqus Commenting System',
-			'slug'		=>	'disqus-comment-system',
 			'required'	=>	false
 		)
 
@@ -179,5 +208,59 @@ function my_less_vars( $vars, $handle ) {
     
     return $vars;
 }
+
+function sabra_onepager_permalink( $permalink, $post, $leavename ) {
+
+	if ( $post->post_type != 'page' ) return $permalink;
+	
+	if ( !empty( $post->post_parent ) ) {
+	
+		if ( get_post_meta( $post->post_parent, '_wp_page_template', true ) == 'one-pager.php' ) return get_permalink( $post->post_parent );
+		
+		$parent = get_post( $post->post_parent );
+		
+		if ( empty( $parent->post_parent ) ) return $permalink;
+		
+		if ( get_post_meta( $parent->post_parent, '_wp_page_template', true ) == 'one-pager.php' ) return get_permalink( $parent->post_parent );
+		
+		return $permalink;
+	
+	}
+
+}
+add_filter( 'post_link', 'sabra_onepager_permalink', 10, 3 );
+
+function sabra_onepager_redirect() {
+
+	if ( is_admin() ) return true;
+
+	global $post;
+	
+	if ( $post->post_type != 'page' ) return true;
+	
+	if ( !empty( $post->post_parent ) ) {
+	
+		if ( get_post_meta( $post->post_parent, '_wp_page_template', true ) == 'one-pager.php' ) {
+			wp_redirect( get_permalink( $post->post_parent ) );
+			exit;
+		} else {
+		
+			$parent = get_post( $post->post_parent );
+		
+			if ( empty( $parent->post_parent ) ) return true;
+		
+			if ( get_post_meta( $parent->post_parent, '_wp_page_template', true ) == 'one-pager.php' ) {
+				wp_redirect( get_permalink( $parent->post_parent ) );
+				exit;
+			}
+		
+			return true;
+		
+		}
+	
+	}	
+
+}
+add_action( 'wp', 'sabra_onepager_redirect' );
 
 ?>

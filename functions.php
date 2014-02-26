@@ -4,6 +4,13 @@
 
 include_once( 'inc/base_functions.php' );
 
+// LOAD THEME TEXT DOMAIN
+
+add_action('after_setup_theme', 'my_theme_setup');
+function my_theme_setup(){
+    load_theme_textdomain('sabra-wordpress-base', get_template_directory() . '/languages');
+}
+
 // INCLUDE NECESSARY JS AND CSS FILES
 
 function sabra_enqueue_scripts_styles() {
@@ -31,10 +38,10 @@ function sabra_enqueue_scripts_styles() {
 	
 	// Script Name:  FLEXSLIDER
 	$scripts[] = array(
-		'handle'	=>	'flexslider',
-		'src'	=>	get_template_directory_uri() . '/js/flexslider/jquery.flexslider-min.js',
+		'handle'	=>	'owl-carousel',
+		'src'	=>	get_template_directory_uri() . '/js/owl-carousel/owl.carousel.min.js',
 		'dependencies'	=>	array( 'jquery' ),
-		'version'		=>	'2.1',
+		'version'		=>	'1.3.2',
 		'in_footer'		=>	true
 	);
 	
@@ -53,6 +60,22 @@ function sabra_enqueue_scripts_styles() {
 		'src'	=>	get_template_directory_uri() . '/js/fancybox/helpers/jquery.fancybox-thumbs.js',
 		'dependencies'	=>	array( 'jquery', 'fancybox' ),
 		'version'		=>	'1.0.7',
+		'in_footer'		=>	true
+	);
+	
+	$scripts[] = array(
+		'handle'	=>	'select2',
+		'src'	=>	get_stylesheet_directory_uri() . '/js/select2/select2.min.js',
+		'dependencies'	=>	array( 'jquery' ),
+		'version'		=>	'3.4.5',
+		'in_footer'		=>	true
+	);
+	
+	$scripts[] = array(
+		'handle'	=>	'TweenLite',
+		'src'	=>	get_stylesheet_directory_uri() . '/js/TweenLite.min.js',
+		'dependencies'	=>	array( 'jquery' ),
+		'version'		=>	'1.10.3',
 		'in_footer'		=>	true
 	);
 	
@@ -78,13 +101,36 @@ function sabra_enqueue_scripts_styles() {
 	}
 	
 	foreach( $styles as $style ) {
-		wp_enqueue_style( $style['handle'], $style['src'], $style['dependencies'], $style['version'], $script['media'] );
+		isset( $style['dependencies'] ) ? $dependencies = $style['dependencies'] : $dependencies = false;
+		isset( $style['version'] ) ? $version = $style['version'] : $version = false;
+		isset( $style['media'] ) ? $media = $style['media'] : $media = false;
+		
+		wp_enqueue_style( $style['handle'], $style['src'], $dependencies, $version, $media );
 	}
 
     
 }
 add_action( 'wp_enqueue_scripts', 'sabra_enqueue_scripts_styles' );
 
-remove_filter('the_content', 'wpautop');
+// remove_filter('the_content', 'wpautop');
+
+
+// FORCE LOGIN TO REACH SITE
+function site_lockdown() {
+
+	if ( is_user_logged_in() ) return true;
+
+	if ( !is_page_template('custom_login.php') && !isset( $_GET['login_redirect'] ) ) {
+	
+		if ( strpos( $_SERVER['REQUEST_URI'], 'login' ) ) $redirect = site_url();
+			else $redirect = site_url( $_SERVER['REQUEST_URI'] );
+	
+		wp_redirect( site_url('login/?login_redirect=' . $redirect ) );
+		die;
+	
+	}
+
+}
+// add_action( 'parse_request', 'site_lockdown', 1 );
 
 ?>

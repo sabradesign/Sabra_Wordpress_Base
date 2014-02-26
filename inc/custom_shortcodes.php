@@ -227,7 +227,7 @@ add_shortcode( 'three_fourth', 'sabra_three_fourth');
 
 //////////////////////////////////////////////////////////////////
 // Slider
-// [slider height="" width="" class="" group=""]
+// [slider height="" width="" class="" group="" id=""]
 //////////////////////////////////////////////////////////////////
 function slider_function( $atts, $content = null ) {
 	extract( shortcode_atts( array(
@@ -237,7 +237,8 @@ function slider_function( $atts, $content = null ) {
 			'class'		=>	'',
 			'nav'		=>	true,
 			'style'		=>	'',
-			'group'		=>	''
+			'group'		=>	'',
+			'id'		=>	''
 		), $atts ) );
 	
 	switch( $size ) {
@@ -258,7 +259,7 @@ function slider_function( $atts, $content = null ) {
 	$class != '' ? $classes = ' '.$class : $classes = '';
 	
 	$output = '';
-	$output .= '<div class="content-flexslider'.$classes.'" style="position: relative;max-width:'.$width.';'.$style.'">';
+	$output .= '<div id="'.$id.'" class="content-flexslider'.$classes.'" style="position: relative;max-width:'.$width.';'.$style.'">';
 	$output .= '<ul class="slides">';
 	
 	if ( isset( $group ) ) {
@@ -965,6 +966,7 @@ function shortcode_company_address_function( $atts, $inner_content = null ) {
 		isset( $company_info['zip'] ) ? $defaults['zip'] = $company_info['zip'] : $defaults['zip'] = "";
 		isset( $company_info['phone'] ) ? $defaults['phone'] = $company_info['phone'] : $defaults['phone'] = "";
 		isset( $company_info['email'] ) ? $defaults['email'] = $company_info['email'] : $defaults['email'] = get_bloginfo('admin_email');
+		isset( $company_info['url'] ) ? $defaults['url'] = $company_info['url'] : $defaults['url'] = get_bloginfo('url');
 		
 	
 	} else {
@@ -976,12 +978,12 @@ function shortcode_company_address_function( $atts, $inner_content = null ) {
 			'state'	=>	'',
 			'zip'	=>	'',
 			'phone'	=>	'',
-			'email'	=>	get_bloginfo('admin_email')
+			'email'	=>	get_bloginfo('admin_email'),
+			'url'	=>	get_bloginfo('url')
 		);
 		
 	}
 	
-	$defaults['url'] = get_bloginfo('url');
 	$defaults['class'] = '';
 	
 	extract( shortcode_atts( $defaults, $atts ) );
@@ -997,7 +999,7 @@ function shortcode_company_address_function( $atts, $inner_content = null ) {
 	$output .= '<span itemprop="address" itemscope="" itemtype="http://data-vocabulary.org/Address">';
 		$output .= '<span itemprop="street-address">'.$street.'</span><br>';
 		$output .= '<span itemprop="locality">'.$city.'</span>, <span itemprop="region">'.$state.'</span> '.$zip.'</span><br>';
-	$output .= '<a href="'.$url.'" itemprop="url">'.$url.'</a> | <a href="mailto:'.$email.'">'.$email.'</a><br>';
+	$output .= '<a href="'.$url.'" itemprop="url">'.$url.'</a><br /><a href="mailto:'.$email.'">'.$email.'</a><br>';
 	$output .= '<span itemprop="tel"><a href="tel:'.$tel.'" title="Call '.$name.'">'.$phone.'</a></span><br>';
 	
 	} else {

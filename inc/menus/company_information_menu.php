@@ -45,6 +45,10 @@ if ( isset($_POST['action']) && $_POST['action'] == 'update_company_information'
 					<td><input type="text" name="company_info[phone]" id="company-phone" placeholder="ex. +1 (555) 555-5555" value="<?php if ( isset( $company_info['phone'] ) ) echo $company_info['phone']; ?>"></td>
 				</tr>
 				<tr>
+					<td><label for="company_info[fax]">Fax Number</label></td>
+					<td><input type="text" name="company_info[fax]" id="company-phone" placeholder="ex. +1 (555) 555-5555" value="<?php if ( isset( $company_info['fax'] ) ) echo $company_info['fax']; ?>"></td>
+				</tr>
+				<tr>
 					<td><label for="company_info[email]">Contact Email Address</label></td>
 					<td><input type="text" name="company_info[email]" id="company-email" placeholder="ex. you@yourcompany.com" value="<?php if ( isset( $company_info['email'] ) ) echo $company_info['email']; ?>"></td>
 				</tr>
@@ -63,6 +67,10 @@ if ( isset($_POST['action']) && $_POST['action'] == 'update_company_information'
 				<tr>
 					<td><label for="company_info[zip]">Zip Code</label></td>
 					<td><input type="text" name="company_info[zip]" id="company-zip" placeholder="ex. 90210" value="<?php if ( isset( $company_info['zip'] ) ) echo $company_info['zip']; ?>"></td>
+				</tr>
+				<tr>
+					<td><label for="company_info[url]">Website URL</label></td>
+					<td><input type="text" name="company_info[url]" id="company-url" placeholder="http://www.me.com" value="<?php if ( isset( $company_info['url'] ) ) echo $company_info['url']; ?>"></td>
 				</tr>
 			</tbody>
 		</table>
