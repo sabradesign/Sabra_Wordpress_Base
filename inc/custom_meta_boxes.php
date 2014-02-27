@@ -44,7 +44,66 @@ $meta_boxes = array();
 // 	),
 // );
 
+$meta_boxes[] = array(
+	'id' => 'slider-options',
+	'title'  => 'Slider Options',
+	'pages' => array( 'page' ),
+	'context' => 'normal',
+	'priority' => 'high',
+	'fields' => array(
+		array(
+			'name' => 'Number of Slides Visible',
+			'id'   => "{$prefix}num_of_slides",
+			'type' => 'number',
+		),
+		array(
+			'name' => 'Slider Speed',
+			'id'   => "{$prefix}slide_speed",
+			'type' => 'number',
+			'std'	=>	1000
+		),
+		array(
+			'name' => 'Autoplay',
+			'id'   => "{$prefix}autoplay",
+			'type' => 'checkbox'
+		),
+		array(
+			'name' => 'Pagination?',
+			'id'   => "{$prefix}pagination",
+			'type' => 'radio',
+			'options' => array(
+				'1' => 'Yes',
+				'0' => 'No',
+			),
+		),
+		array(
+			'name' => 'After Content',
+			'id'   => "{$prefix}after_content",
+			'type' => 'wysiwyg',
+		)
+	),
+	'only_on'    => array(
+		'template' => array( 'onepager-slider.php', 'onepager-modals.php' )
+	)
+);
 
+$meta_boxes[] = array(
+	'id' => 'onepager-page-options',
+	'title'  => 'One Pager Page Options',
+	'pages' => array( 'page' ),
+	'context' => 'normal',
+	'priority' => 'high',
+	'fields' => array(
+		array(
+			'name' => 'Exclude from Menu',
+			'id'   => "{$prefix}exclude_from_menu",
+			'type' => 'checkbox',
+		)
+	),
+	'only_on'	=>	array(
+		'parent_template'	=>	array( 'one-pager.php' )
+	)
+);
 
 /*****************************************************************************************
 ************************ NO MORE EDITING NECESSARY BEYOND THIS POINT *********************

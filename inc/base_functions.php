@@ -41,7 +41,8 @@ function register_required_plugins() {
 		array(
 			'name'     				=> 'User Meta Plugin', // The plugin name
 			'slug'     				=> 'user-meta', // The plugin slug (typically the folder name)
-			'source'   				=> get_stylesheet_directory() . '/inc/plugins/user-meta.zip' // The plugin source
+			'source'   				=> get_stylesheet_directory() . '/inc/plugins/user-meta.zip', // The plugin source
+			'required' 				=> false
 		),
 
 		// BACKUPBUDDY
@@ -56,14 +57,16 @@ function register_required_plugins() {
 		array(
 			'name'     				=> 'WP MultiLingual', // The plugin name
 			'slug'     				=> 'sitepress-multilingual-cms', // The plugin slug (typically the folder name)
-			'source'   				=> get_stylesheet_directory() . '/inc/plugins/sitepress-multilingual-cms.zip' // The plugin source
+			'source'   				=> get_stylesheet_directory() . '/inc/plugins/sitepress-multilingual-cms.zip', // The plugin source
+			'required' 				=> false
 		),
 		
 		// WPML String Translation
 		array(
 			'name'     				=> 'WP MultiLingual - String Translation Expansion', // The plugin name
 			'slug'     				=> 'wpml-string-translation', // The plugin slug (typically the folder name)
-			'source'   				=> get_stylesheet_directory() . '/inc/plugins/wpml-string-translation.zip' // The plugin source
+			'source'   				=> get_stylesheet_directory() . '/inc/plugins/wpml-string-translation.zip', // The plugin source
+			'required' 				=> false
 		),
 
 		// This is an example of how to include a plugin from the WordPress Plugin Repository
@@ -75,15 +78,18 @@ function register_required_plugins() {
 		),
 		array(
 			'name' 		=> 'Google Analyticator',
-			'slug' 		=> 'google-analyticator'
+			'slug' 		=> 'google-analyticator',
+			'required' 				=> false
 		),
 		array(
 			'name' 		=> 'Maintenance Mode',
-			'slug' 		=> 'maintenance-mode'
+			'slug' 		=> 'maintenance-mode',
+			'required' 				=> false
 		),
 		array(
 			'name' 		=> 'Word Fence',
-			'slug' 		=> 'wordfence'
+			'slug' 		=> 'wordfence',
+			'required' 				=> false
 		),
 		array(
 			'name' 		=> 'WP Less',
