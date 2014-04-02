@@ -95,6 +95,45 @@ function add_custom_post_types() {
 		'show_tax_ui'	=>	false
 	);
 	
+ 	/****
+	Post Type Name:  Testimonials
+	Post Type Description:  These will be customer testimonials.
+	*/
+	$custom_post_types[] = array(
+		'name'	=>	'testimonials',
+		'args' => array(
+			'labels' => array(
+				'name' => 'Testimonials',
+				'singular_name' => 'Testimonial',
+				'add_new' => 'Add New',
+				'add_new_item' => 'Add New Testimonial',
+				'edit_item' => 'Edit Testimonial',
+				'new_item' => 'New Testimonial',
+				'all_items' => 'All Testimonials',
+				'view_item' => 'View Testimonial',
+				'search_items' => 'Search Testimonials',
+				'not_found' =>  'No testimonials found',
+				'not_found_in_trash' => 'No testimonials found in Trash', 
+				'parent_item_colon' => '',
+				'menu_name' => 'Testimonials'
+			  ),
+			'public' => true,
+			'publicly_queryable' => true,
+			'show_ui' => true, 
+			'show_in_menu' => true, 
+			'query_var' => true,
+			'rewrite' => array( 'slug' => 'testimonials' ),
+			'capability_type' => 'post',
+			'has_archive' => true, 
+			'hierarchical' => false,
+			'menu_position' => null,
+			'supports' => array( 'thumbnail' )
+		),
+		'parallel-tax'	=>	true,  // Whether there should be a parallel taxonomy
+		'tax_post_types'	=>	array( 'post' ), // ADD THE POST TYPES THAT THIS TAXONOMY WILL APPLY TO
+		'show_tax_ui'	=>	false // Whether taxonomy should be accessible through the UI
+	);	
+	
 
 	// Register Custom Post Types
 	

@@ -112,6 +112,29 @@ function sabra_enqueue_scripts_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'sabra_enqueue_scripts_styles' );
 
+//LOAD ADMIN JS
+
+function sabra_enqueue_admin_scripts() {
+
+	wp_enqueue_script( 'jquery-ui-tabs' );
+	wp_enqueue_script( 'jquery-ui-datepicker' );
+	wp_enqueue_script( 'admin-js', get_stylesheet_directory_uri() . '/inc/js/admin.js', array( 'jquery' ) );
+
+	wp_enqueue_style( 'jquery-ui', 'http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css' );
+	wp_enqueue_style( 'admin-css', get_stylesheet_directory_uri() . '/inc/admin.less');
+	
+	if (class_exists('WPLessPlugin')){
+	
+		$less = WPLessPlugin::getInstance();
+
+		// do stuff with its API like:
+		$less->processStylesheets();
+	
+	}
+	
+}
+add_action( 'admin_init', 'sabra_enqueue_admin_scripts' );
+
 // remove_filter('the_content', 'wpautop');
 
 

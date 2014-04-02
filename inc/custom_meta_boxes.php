@@ -17,9 +17,9 @@ Meta box setting details found in the 'meta-box-demo.php' file
 *****************************************************************************************/
 
 
-// SET META DATA PREFIEX
+// SET META DATA PREFIX
+global $meta_boxes, $prefix;
 $prefix = 'rw_';
-global $meta_boxes;
 $meta_boxes = array();
 
 // /*
@@ -102,6 +102,64 @@ $meta_boxes[] = array(
 	),
 	'only_on'	=>	array(
 		'parent_template'	=>	array( 'one-pager.php' )
+	)
+);
+
+$meta_boxes[] = array(
+	'id' => 'onepager-options',
+	'title'  => 'One Pager Options',
+	'pages' => array( 'page' ),
+	'context' => 'normal',
+	'priority' => 'high',
+	'fields' => array(
+		array(
+			'name' => 'Include Menu?',
+			'id'   => "{$prefix}include_menu",
+			'type' => 'checkbox'
+		)
+	),
+	'only_on'	=>	array(
+		'template'	=>	array( 'one-pager.php' )
+	)
+);
+
+$meta_boxes[] = array(
+	'id' => 'testimonial-options',
+	'title'  => 'Testimonial Options',
+	'pages' => array( 'testimonials' ),
+	'context' => 'normal',
+	'priority' => 'high',
+	'fields' => array(
+		array(
+			'name' => 'Person Name',
+			'id'   => "{$prefix}testimonial_name",
+			'type' => 'text'
+		),
+		array(
+			'name' => 'Person Title',
+			'id'   => "{$prefix}testimonial_title",
+			'type' => 'text'
+		),
+		array(
+			'name' => 'Company Name',
+			'id'   => "{$prefix}testimonial_company",
+			'type' => 'text'
+		),
+		array(
+			'name' => 'Company URL',
+			'id'   => "{$prefix}testimonial_url",
+			'type' => 'text'
+		),
+		array(
+			'name' => 'Short Testimonial',
+			'id'   => "excerpt",
+			'type' => 'textarea'
+		),
+		array(
+			'name' => 'Full Testimonial Content',
+			'id'   => "content",
+			'type' => 'wysiwyg'
+		)
 	)
 );
 

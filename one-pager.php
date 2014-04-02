@@ -16,8 +16,12 @@ get_header(); ?>
 				);
 				
 				$children = new WP_Query( $child_args );
-				
-				if ( $children->have_posts() ) : ?>
+				global $prefix;
+				?>
+
+				<?php if ( get_post_meta( get_the_ID(), $prefix."include_menu", TRUE ) ) : ?>
+								
+				<?php if ( $children->have_posts() ) : ?>
 
 					<div class="navbar scroll-navbar navbar-static-top hidden-phone hidden-tablet">
 					  <div class="navbar-inner">
@@ -88,6 +92,8 @@ get_header(); ?>
 					<?php endif; ?>
 					
 					<?php wp_reset_query(); ?>
+					
+					<?php endif; ?>
 
 		<?php global $post; ?>
 			
