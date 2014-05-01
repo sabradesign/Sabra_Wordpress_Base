@@ -51,7 +51,7 @@ function stripslashes(str) {
 jQuery(document).ready( function($) {
 
 	// FLEXSLIDER
-	$('.content-flexslider').owl-carousel();
+	$('.content-flexslider').owlCarousel();
 	
 	// OWL CAROUSEL ON ONE PAGER
 	$('.owl-carousel-full').each( function() {

@@ -9,15 +9,11 @@
  * @since Twenty Eleven 1.0
  */
 ?><!DOCTYPE html>
-<!--[if IE 6]>
-<html id="ie6" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if IE 7]>
-<html id="ie7" <?php language_attributes(); ?>>
-<![endif]-->
-<!--[if IE 8]>
-<html id="ie8" <?php language_attributes(); ?>>
-<![endif]-->
+<!--[if lt IE 7]> <html id="ie6" class="no-js ie6 oldie" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 7]>    <html id="ie7" class="no-js ie7 oldie" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 8]>    <html id="ie8" class="no-js ie8 oldie" <?php language_attributes(); ?>> <![endif]-->
+<!--[if IE 9]>    <html id="ie9" class="no-js ie9 oldie" <?php language_attributes(); ?>> <![endif]-->
+<!--[if gt IE 8]> <html id="ie8" class="no-js newie" <?php language_attributes(); ?>> <![endif]-->
 <!--[if !(IE 6) | !(IE 7) | !(IE 8)  ]><!-->
 <html <?php language_attributes(); ?>>
 <!--<![endif]-->
@@ -100,3 +96,5 @@
 	</div>
 
 <div id="main" class="with-sidebar">
+
+<!-- A Novel Change -->
