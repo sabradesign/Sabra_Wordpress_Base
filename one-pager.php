@@ -7,6 +7,13 @@
 
 get_header(); ?>
 
+<?php 
+
+// SET META DATA PREFIX
+global $meta_boxes, $prefix;
+
+?>
+
 			<?php $child_args = array(
 					'post_type'		=>		'page',
 					'post_parent'		=>		$post->ID,
@@ -19,7 +26,7 @@ get_header(); ?>
 				global $prefix;
 				?>
 
-				<?php if ( get_post_meta( get_the_ID(), $prefix."include_menu", TRUE ) ) : ?>
+				<?php if ( get_post_meta( get_the_ID(), "{$prefix}include_menu", TRUE ) ) : ?>
 								
 				<?php if ( $children->have_posts() ) : ?>
 
@@ -40,7 +47,7 @@ get_header(); ?>
 						
 										<?php global $post; ?>
 										
-										<?php if ( get_post_meta( get_the_ID(), 'sc_exclude_from_menu', true ) != 1 ) : ?>
+										<?php if ( get_post_meta( get_the_ID(), "{$prefix}exclude_from_menu", true ) != 1 ) : ?>
 						
 										<li>
 											<a href="#page-<?php echo $post->post_name; ?>"><?php the_title(); ?></a>
@@ -73,7 +80,7 @@ get_header(); ?>
 						
 										<?php global $post; ?>
 										
-										<?php if ( get_post_meta( get_the_ID(), 'sc_exclude_from_menu', true ) != 1 ) : ?>
+										<?php if ( get_post_meta( get_the_ID(), "{$prefix}exclude_from_menu", true ) != 1 ) : ?>
 						
 										<li>
 											<a href="#page-<?php echo $post->post_name; ?>"><?php the_title(); ?></a>

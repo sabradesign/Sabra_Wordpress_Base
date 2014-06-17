@@ -163,6 +163,45 @@ $meta_boxes[] = array(
 	)
 );
 
+$meta_boxes[] = array(
+	'id' => 'onepager-page-options',
+	'title'  => 'One Pager Page Options',
+	'pages' => array( 'page' ),
+	'context' => 'normal',
+	'priority' => 'high',
+	'fields' => array(
+		array(
+			'name' => 'Exclude from Menu',
+			'id'   => "{$prefix}exclude_from_menu",
+			'type' => 'checkbox',
+		),
+		array(
+			'name' => 'Additional Styles',
+			'id'   => "{$prefix}additional_classes",
+			'type' => 'select_advanced',
+			'multiple'	=>	true,
+			'options'	=>	array(
+				'teal-bg'	=>	'Teal Background',
+				'yellow-bg'	=>	'Yellow Background',
+				'dark-gray-bg'	=>	'Dark Gray Background',
+				'cloud-bg'	=>	'Cloud Background',
+				'currency-bg'	=>	'Currency Watermark',
+				'tree-bg'	=>	'Tree Watermark',
+				'gray-bg'	=>	'Gray Background',
+				'bottom-triangle'	=>	'Bottom Triangle - Yellow',
+				'bottom-triangle-black'	=>	'Bottom Triangle - Black',
+				'bottom-triangle-teal'	=>	'Bottom Triangle - Teal',
+				'bottom-triangle-gray'	=>	'Bottom Triangle - Gray',
+				'bottom-triangle-white'	=>	'Bottom Triangle - White',
+				'bottom-lumix-divider'	=>	'Lumix Logo Section Divider'
+			)
+		)
+	),
+	'only_on'	=>	array(
+		'parent_template'	=>	array( 'one-pager.php' )
+	)
+);
+
 /*****************************************************************************************
 ************************ NO MORE EDITING NECESSARY BEYOND THIS POINT *********************
 *****************************************************************************************/

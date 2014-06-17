@@ -8,7 +8,7 @@
  
  ?>
 
-<?php global $post; ?>
+<?php global $post, $prefix; ?>
 
 <section id="page-<?php echo $post->post_name; ?>" class="onepager-carousel onepager-modals">
 <div class="container">
@@ -18,7 +18,7 @@
 	</div>
 </div>
 
-<?php $after = get_post_meta( get_the_ID(), 'sc_after_content', true ); ?>
+<?php $after = get_post_meta( get_the_ID(),"{$prefix}after_content", true ); ?>
 
 <?php $childchild_args = array(
 		'post_type'		=>		'page',
@@ -32,7 +32,7 @@ $childchildren = new WP_Query( $childchild_args );
 
 if ( $childchildren->have_posts() ) : ?>
 
-<?php if ( !$slides = get_post_meta( get_the_ID(), 'sc_num_of_slides', true ) ) $slides = 1; ?>
+<?php if ( !$slides = get_post_meta( get_the_ID(), "{$prefix}num_of_slides", true ) ) $slides = 1; ?>
 
 <div class="owl-carousel-full" data-slides=<?php echo $slides; ?>>
 

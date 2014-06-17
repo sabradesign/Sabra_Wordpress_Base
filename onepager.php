@@ -1,4 +1,4 @@
-<?php global $post; ?>
+<?php global $post, $prefix; ?>
 
 <section id="page-<?php echo $post->post_name; ?>">
 	<div class="container">
