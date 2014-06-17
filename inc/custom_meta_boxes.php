@@ -77,15 +77,114 @@ $meta_boxes[] = array(
 			),
 		),
 		array(
+			'name' => 'Post Type?',
+			'id'   => "{$prefix}use_posts",
+			'type' => 'text'
+		),
+		array(
+			'name' => 'Taxonomy',
+			'id'   => "{$prefix}post_taxonomy",
+			'type' => 'text'
+		),
+		array(
+			'name' => 'Tax Slug',
+			'desc'	=>	'If you would like for posts to be inserted from a particular category, insert it here.',
+			'id'   => "{$prefix}tax_term",
+			'type' => 'text'
+		),
+		array(
+			'name' => '# of posts?',
+			'id'   => "{$prefix}number_posts",
+			'type' => 'number',
+			'std'	=>	10
+		),
+		array(
 			'name' => 'After Content',
 			'id'   => "{$prefix}after_content",
-			'type' => 'wysiwyg',
+			'type' => 'wysiwyg'
 		)
 	),
 	'only_on'    => array(
 		'template' => array( 'onepager-slider.php', 'onepager-modals.php' )
 	)
 );
+
+$meta_boxes[] = array(
+	'id' => 'onepager-columns-options',
+	'title'  => 'Number of Columns',
+	'pages' => array( 'page' ),
+	'context' => 'normal',
+	'priority' => 'high',
+	'fields' => array(
+		array(
+			'name' => 'Number of Columns',
+			'id'   => "{$prefix}num_columns",
+			'type' => 'select',
+			'options'	=>	array(
+				1	=>	'1',
+				2	=>	'2',
+				3	=>	'3',
+				4	=>	'4'
+			)
+		)
+	),
+	'only_on'    => array(
+		'template' => array( 'onepager-columns.php' )
+	)
+);
+
+if ( isset( $_GET['post'] ) ) {
+	$post_id = $_GET['post'];
+}
+elseif ( isset( $_POST['post_ID'] ) ) {
+	$post_id = $_POST['post_ID'];
+}
+else {
+	$post_id = false;
+}
+
+$post = get_post( $post_id );
+
+if ( is_admin() && $post && $post->post_type == 'page' && get_post_meta( $post->ID, '_wp_page_template', true ) == 'onepager-columns.php' ) {
+	
+	$fields = array();
+	
+	$fields[] = array(
+		'name'	=>	'Column 1',
+		'id'	=>	"{$prefix}column_1",
+		'type'	=>	'wysiwyg'
+	);
+	
+	if ( $columns = get_post_meta( $post->ID, "{$prefix}num_columns", true ) ) {
+		$count = 2;
+		
+		while ( $count <= $columns ) {
+		
+			$fields[] = array(
+				'name'	=>	'Column ' . $count,
+				'id'	=>	"{$prefix}column_".$count,
+				'type'	=>	'wysiwyg'
+			);
+			
+			$count++;
+		
+		}
+	
+	}
+	
+	$meta_boxes[] = array(
+		'id' => 'onepager-columns-columns',
+		'title'  => 'Column Content',
+		'pages' => array( 'page' ),
+		'context' => 'normal',
+		'priority' => 'high',
+		'fields' => $fields,
+		'only_on'    => array(
+			'template' => array( 'onepager-columns.php' )
+		)
+	);
+
+}
 
 $meta_boxes[] = array(
 	'id' => 'onepager-page-options',
@@ -106,20 +205,20 @@ $meta_boxes[] = array(
 );
 
 $meta_boxes[] = array(
-	'id' => 'onepager-options',
-	'title'  => 'One Pager Options',
+	'id' => 'onepager-gmaps-options',
+	'title'  => 'Google Maps Options',
 	'pages' => array( 'page' ),
 	'context' => 'normal',
 	'priority' => 'high',
 	'fields' => array(
 		array(
-			'name' => 'Include Menu?',
-			'id'   => "{$prefix}include_menu",
-			'type' => 'checkbox'
+			'name' => 'Map Location',
+			'id'   => "{$prefix}map_location",
+			'type' => 'text'
 		)
 	),
 	'only_on'	=>	array(
-		'template'	=>	array( 'one-pager.php' )
+		'template'	=>	array( 'onepager-gmaps.php' )
 	)
 );
 
@@ -158,6 +257,31 @@ $meta_boxes[] = array(
 		array(
 			'name' => 'Full Testimonial Content',
 			'id'   => "content",
+			'type' => 'wysiwyg'
+		)
+	)
+);
+
+$meta_boxes[] = array(
+	'id' => 'jobs',
+	'title'  => 'Job Details',
+	'pages' => array( 'jobs' ),
+	'context' => 'normal',
+	'priority' => 'high',
+	'fields' => array(
+		array(
+			'name' => 'Position Name',
+			'id'   => "post_title",
+			'type' => 'text'
+		),
+		array(
+			'name' => 'Position Short Description',
+			'id'   => "excerpt",
+			'type' => 'textarea'
+		),
+		array(
+			'name' => 'Position Full Description',
+			'id'   => "post_content",
 			'type' => 'wysiwyg'
 		)
 	)

@@ -77,6 +77,12 @@ function register_required_plugins() {
 			'force_activation' 		=> false
 		),
 		array(
+			'name' 		=> 'Admin Menu Editor',
+			'slug' 		=> 'admin-menu-editor',
+			'required' 	=> false,
+			'force_activation' 		=> false
+		),
+		array(
 			'name' 		=> 'Google Analyticator',
 			'slug' 		=> 'google-analyticator',
 			'required' 				=> false

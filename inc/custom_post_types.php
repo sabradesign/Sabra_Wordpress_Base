@@ -134,6 +134,44 @@ function add_custom_post_types() {
 		'show_tax_ui'	=>	false // Whether taxonomy should be accessible through the UI
 	);	
 	
+ 	/****
+	Post Type Name:  Job Postings
+	Post Type Description:  These will be job postings.
+	*/
+	$custom_post_types[] = array(
+		'name'	=>	'jobs',
+		'args' => array(
+			'labels' => array(
+				'name' => 'Job Postings',
+				'singular_name' => 'Job Posting',
+				'add_new' => 'Add New Job Posting',
+				'add_new_item' => 'Add New Job Posting',
+				'edit_item' => 'Edit Job Posting',
+				'new_item' => 'New Job Posting',
+				'all_items' => 'All Job Postings',
+				'view_item' => 'View Job Posting',
+				'search_items' => 'Search Job Postings',
+				'not_found' =>  'No job postings found',
+				'not_found_in_trash' => 'No job postings found in Trash', 
+				'parent_item_colon' => '',
+				'menu_name' => 'Job Postings'
+			  ),
+			'public' => true,
+			'publicly_queryable' => true,
+			'show_ui' => true, 
+			'show_in_menu' => true, 
+			'query_var' => true,
+			'rewrite' => array( 'slug' => 'jobs' ),
+			'capability_type' => 'post',
+			'has_archive' => true, 
+			'hierarchical' => false,
+			'menu_position' => null,
+			'supports' => array( 'thumbnail' )
+		),
+		'parallel-tax'	=>	false,  // Whether there should be a parallel taxonomy
+		'tax_post_types'	=>	array( 'post' ), // ADD THE POST TYPES THAT THIS TAXONOMY WILL APPLY TO
+		'show_tax_ui'	=>	false // Whether taxonomy should be accessible through the UI
+	);
 
 	// Register Custom Post Types
 	

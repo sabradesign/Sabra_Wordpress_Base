@@ -39,7 +39,7 @@ if ( $childchildren->have_posts() ) : ?>
 <div class="owl-carousel-full" data-slides=<?php echo $slides; ?>>
 
 	<?php while( $childchildren->have_posts() ) : $childchildren->the_post(); ?>
-			<?php global $post, "${$prefix}modals"; ?>
+			<?php global $post, "$global_modals"; ?>
 			
 			<div class="row-fluid">
 				

@@ -16,7 +16,7 @@
 <div class="container">
 <div class="row-fluid">
 	<div class="span12">
-		<?php the_content(); ?> TEST
+		<?php the_content(); ?>
 	</div>
 </div>
 

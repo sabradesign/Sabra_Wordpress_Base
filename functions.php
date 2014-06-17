@@ -22,9 +22,9 @@ function sabra_enqueue_scripts_styles() {
 	$scripts[] = array(
 		'handle'	=>	'modernizr',
 		'src'	=>	get_template_directory_uri() . '/js/modernizr.min.js',
-		'dependencies'	=>	array( 'jquery' ),
+		'dependencies'	=>	array(),
 		'version'		=>	'2.6.2',
-		'in_footer'		=>	true
+		'in_footer'		=>	false
 	);
 	
 	// Script Name:  Bootstrap

@@ -7,6 +7,7 @@
 
 get_header(); ?>
 
+
 <?php global $post, $prefix; ?>
 
 <?php $classes = implode( ' ', get_post_meta( get_the_ID(), "{$prefix}additional_classes", false ) ); ?>
