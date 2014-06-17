@@ -7,12 +7,9 @@
 
 get_header(); ?>
 
-<?php 
+<?php global $post, $prefix; ?>
 
-// SET META DATA PREFIX
-global $meta_boxes, $prefix;
-
-?>
+<?php $classes = implode( ' ', get_post_meta( get_the_ID(), "{$prefix}additional_classes", false ) ); ?>
 
 			<?php $child_args = array(
 					'post_type'		=>		'page',

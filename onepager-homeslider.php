@@ -2,7 +2,7 @@
 
 /**
  * 
- * Template Name: One Pager - Slider
+ * Template Name: One Pager - Home Slider
  *
  */
  
@@ -12,23 +12,38 @@
 
 <?php $classes = implode( ' ', get_post_meta( get_the_ID(), "{$prefix}additional_classes", false ) ); ?>
 
-<section id="page-<?php echo $post->post_name; ?>" class="onepager-carousel">
+<section id="page-<?php echo $post->post_name; ?>" class="onepager-carousel <?php echo $classes; ?>">
 <div class="container">
 <div class="row-fluid">
-	<div class="span12">
-		<?php the_content(); ?> TEST
+	<div class="span12 lu-content">
+		<?php the_content(); ?>
 	</div>
 </div>
 
 <?php $after = get_post_meta( get_the_ID(), "{$prefix}after_content", true ); ?>
 
-<?php $childchild_args = array(
-		'post_type'		=>		'page',
-		'post_parent'		=>		get_the_ID(),
-		'nopaging'		=>		true,
-		'orderby'		=>	'menu_order',
-		'order'			=>	'ASC'
-); 
+<?php 
+
+if ( post_type_exists( get_post_meta( get_the_ID(), "{$prefix}use_posts", true ) ) ) {
+
+	$number = get_post_meta( get_the_ID(), "{$prefix}number_posts", true );
+
+	$childchild_args = array(
+			'post_type'			=>	get_post_meta( get_the_ID(), "{$prefix}use_posts", true ),
+			'posts_per_page'	=>	$number
+	); 
+
+} else {
+
+	$childchild_args = array(
+			'post_type'		=>		'page',
+			'post_parent'		=>		get_the_ID(),
+			'nopaging'		=>		true,
+			'orderby'		=>	'menu_order',
+			'order'			=>	'ASC'
+	); 
+
+}
 
 $childchildren = new WP_Query( $childchild_args );
 
@@ -42,11 +57,14 @@ if ( $childchildren->have_posts() ) : ?>
 
 <?php if ( !$paging = get_post_meta( get_the_ID(), "{$prefix}pagination", true ) ) $paging = true; ?>
 
-<div class="owl-carousel-full" data-slides=<?php echo $slides; ?> data-autoplay="<?php if ( $autoplay == false ) { echo 'false'; } else { echo $slideSpeed; } ?>" data-slideSpeed=<?php echo $slideSpeed; ?> data-paging=0>
+<div class="lumix-tree"></div>
+
+
+<div class="owl-carousel-full" data-paging="<?php echo $paging; ?>" data-slides=<?php echo $slides; ?> data-autoplay="<?php if ( $autoplay == false ) { echo 'false'; } else { echo $slideSpeed; } ?>" data-slideSpeed=<?php echo $slideSpeed; ?> data-paging=0>
 
 	<?php while( $childchildren->have_posts() ) : $childchildren->the_post(); ?>
 			<div class="row-fluid">
-				<div class="span12">
+				<div class="span12 lu-content">
 					<?php the_content(); ?>
 				</div>
 			</div>
@@ -60,7 +78,7 @@ if ( $childchildren->have_posts() ) : ?>
 <?php if ( $after ) : ?>
 
 <div class="row-fluid">
-	<div class="span12">
+	<div class="span12 lu-content">
 		<?php //echo apply_filters( 'the_content', $after ); ?>
 		<?php echo do_shortcode( $after ); ?>
 	</div>
@@ -69,4 +87,5 @@ if ( $childchildren->have_posts() ) : ?>
 <?php endif; ?>
 
 </div>
+<a href="#" class="jumpToSectionButton" data-target="page-about-us">ˇ</a>
 </section>

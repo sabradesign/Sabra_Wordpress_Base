@@ -10,6 +10,8 @@
 
 <?php global $post, $prefix; ?>
 
+<?php $classes = implode( ' ', get_post_meta( get_the_ID(), "{$prefix}additional_classes", false ) ); ?>
+
 <section id="page-<?php echo $post->post_name; ?>" class="onepager-carousel onepager-modals">
 <div class="container">
 <div class="row-fluid">
@@ -18,7 +20,7 @@
 	</div>
 </div>
 
-<?php $after = get_post_meta( get_the_ID(),"{$prefix}after_content", true ); ?>
+<?php $after = get_post_meta( get_the_ID(), "{$prefix}after_content", true ); ?>
 
 <?php $childchild_args = array(
 		'post_type'		=>		'page',
@@ -37,7 +39,7 @@ if ( $childchildren->have_posts() ) : ?>
 <div class="owl-carousel-full" data-slides=<?php echo $slides; ?>>
 
 	<?php while( $childchildren->have_posts() ) : $childchildren->the_post(); ?>
-			<?php global $post, $sc_modals; ?>
+			<?php global $post, "${$prefix}modals"; ?>
 			
 			<div class="row-fluid">
 				
@@ -66,7 +68,7 @@ if ( $childchildren->have_posts() ) : ?>
 					$modal_html .= '<div class="modal-footer"><button class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Close</button></div>';
 					$modal_html .= '</div>';
 				
-					$sc_modals[] = $modal_html;
+					${$prefix}modals[] = $modal_html;
 				
 				?>
 				
