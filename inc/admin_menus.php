@@ -8,7 +8,7 @@ function custom_settings_menus() {
 }
 
 function company_information_menu(){
-  	if (!current_user_can('manage_options'))  {
+  	if (!current_user_can('edit_posts'))  {
 		wp_die( __('You do not have sufficient permissions to access this page.') );
 	}
 	include('menus/company_information_menu.php');

@@ -15,7 +15,7 @@
 <section id="page-<?php echo $post->post_name; ?>" class="onepager-carousel <?php echo $classes; ?>">
 <div class="container">
 <div class="row-fluid">
-	<div class="span12 lu-content">
+	<div class="span12 viz-content">
 		<?php the_content(); ?>
 	</div>
 </div>
@@ -57,14 +57,14 @@ if ( $childchildren->have_posts() ) : ?>
 
 <?php if ( !$paging = get_post_meta( get_the_ID(), "{$prefix}pagination", true ) ) $paging = true; ?>
 
-<div class="lumix-tree"></div>
+
 
 
 <div class="owl-carousel-full" data-paging="<?php echo $paging; ?>" data-slides=<?php echo $slides; ?> data-autoplay="<?php if ( $autoplay == false ) { echo 'false'; } else { echo $slideSpeed; } ?>" data-slideSpeed=<?php echo $slideSpeed; ?> data-paging=0>
 
 	<?php while( $childchildren->have_posts() ) : $childchildren->the_post(); ?>
 			<div class="row-fluid">
-				<div class="span12 lu-content">
+				<div class="span12 viz-content">
 					<?php the_content(); ?>
 				</div>
 			</div>
@@ -78,7 +78,7 @@ if ( $childchildren->have_posts() ) : ?>
 <?php if ( $after ) : ?>
 
 <div class="row-fluid">
-	<div class="span12 lu-content">
+	<div class="span12 viz-content">
 		<?php //echo apply_filters( 'the_content', $after ); ?>
 		<?php echo do_shortcode( $after ); ?>
 	</div>
