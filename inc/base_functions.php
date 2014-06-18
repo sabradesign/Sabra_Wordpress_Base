@@ -20,8 +20,6 @@ include_once( 'tiny_mce_buttons.php' );
 include_once( 'nav-walker.php' );
 include_once( 'admin_menus.php' );
 
-// ADMIN MENUS
-include_once( 'custom_admin_menus.php' );
 
 // INCLUDE NECESSARY PLUGINS
 
