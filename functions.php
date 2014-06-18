@@ -63,6 +63,7 @@ function sabra_enqueue_scripts_styles() {
 		'in_footer'		=>	true
 	);
 	
+	// Script Name:  SELECT 2
 	$scripts[] = array(
 		'handle'	=>	'select2',
 		'src'	=>	get_stylesheet_directory_uri() . '/js/select2/select2.min.js',
@@ -71,11 +72,21 @@ function sabra_enqueue_scripts_styles() {
 		'in_footer'		=>	true
 	);
 	
+	// Script Name:  TWEENLITE
 	$scripts[] = array(
 		'handle'	=>	'TweenLite',
 		'src'	=>	get_stylesheet_directory_uri() . '/js/TweenLite.min.js',
 		'dependencies'	=>	array( 'jquery' ),
 		'version'		=>	'1.10.3',
+		'in_footer'		=>	true
+	);
+
+		// Script Name:  MMENU
+	$scripts[] = array(
+		'handle'	=>	'mmenu',
+		'src'	=>	get_template_directory_uri() . '/js/jquery.mmenu.min.all.js',
+		'dependencies'	=>	array( 'jquery' ),
+		'version'		=>	'4.3.1',
 		'in_footer'		=>	true
 	);
 	
