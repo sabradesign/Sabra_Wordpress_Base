@@ -81,7 +81,7 @@ function sabra_enqueue_scripts_styles() {
 		'in_footer'		=>	true
 	);
 
-		// Script Name:  MMENU
+	// Script Name:  MMENU
 	$scripts[] = array(
 		'handle'	=>	'mmenu',
 		'src'	=>	get_template_directory_uri() . '/js/jquery.mmenu.min.all.js',
@@ -89,6 +89,15 @@ function sabra_enqueue_scripts_styles() {
 		'version'		=>	'4.3.1',
 		'in_footer'		=>	true
 	);
+	
+	// Script Name:  PLACEHOLDER
+	$scripts[] = array(
+		'handle'	=>	'placeholder',
+		'src'	=>	get_template_directory_uri() . '/js/jquery.placeholder.js',
+		'dependencies'	=>	array( 'jquery' ),
+		'version'		=>	'',
+		'in_footer'		=>	true
+	);	
 	
 	// Script Name:  GLOBAL
 	$scripts[] = array(
