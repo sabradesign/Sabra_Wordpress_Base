@@ -1,5 +1,12 @@
+//
+// Paragraph Element Syling
+// ------------------------
+
+
+// H2 element parent styling (& sign designates the parent element)
 h2 {
 
+	// Section-header subclass styling 
 	&.section-header {
 		
 		font-size: 16px;
@@ -12,6 +19,7 @@ h2 {
 		background-repeat: no-repeat;
 		background-position: center top;
 		
+		// Styling appended to content before the h2.section-header subclass elements
 		&:before {
 		
 			height: 1px;
@@ -24,6 +32,7 @@ h2 {
 		
 		}
 		
+		// Styling appended after the h2.section-header subclass elements
 		&:after {
 		
 			height: 1px;
@@ -40,18 +49,22 @@ h2 {
 
 }
 
+// Secondary-font subclass styling
 .secondary-font {
 	font-family: @serifFontFamily;
 }
 
+// Orange-font subclass styling
 .orange-font {
 	color: @primaryColor;
 }
 
+// Sans-font subclass styling
 .sans-font {
 	font-family:  @sansFontFamily;
 }
 
+// Sans-font subclass styling (of h3 elements)
 h3.sans-font {
 	font-weight: normal;
 }

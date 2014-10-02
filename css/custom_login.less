@@ -1,3 +1,9 @@
+//
+// Custom Login Styling
+// --------------------------
+
+
+// Custom login page's body styling
 body.page-template-custom_login-php {
 
 	position: absolute;
@@ -7,9 +13,11 @@ body.page-template-custom_login-php {
 	top: 0;
 	.cloud-bg;
 
+	// Form-container ID styling
 	#form-container {
 		width: 100%;
 		
+		// Logo subclass styling (of form-container ID element)
 		.logo {
 			background-image: url(@{stylesheet_directory_uri}/images/header-logo.png);
 			background-position: center;
@@ -20,10 +28,12 @@ body.page-template-custom_login-php {
 			display: block;	
 		}
 		
+		// Form element styling (within the form-container ID element)
 		form {
 			max-width: 300px;
 			margin: 0 auto;
 			
+			// Styling of form input elements with attribute of type "text" and "password"
 			input[type="text"],
 			input[type="password"] {
 				box-shadow: inset 0 0 5px @grayLight;

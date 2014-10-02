@@ -1,14 +1,22 @@
+//
+// Utility Classes 
+// ---------------
+
+
+// Border-Box rule for all elements
 * { 
 	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
 	-moz-box-sizing: border-box;    /* Firefox, other Gecko */
 	box-sizing: border-box;         /* Opera/IE 8+ */
 }
 
+// Section class styling 
 .section {
 
 	padding: @paddingLarge;
 	position: relative;
 	
+	// Gray-border subclass styling (of parent selector, section class, designated by &)
 	&.gray-border {
 		border-left-width: 0px;
 		border-right-width: 0px;
@@ -16,29 +24,35 @@
 
 }
 
+// Gray-border class styling
 .gray-border {
 	border: 2px solid @grayLighter;
 }
 
+// Gray-bg class styling
 .gray-bg {
 	background-color: lighten( @grayLighter, 5% );
 	box-shadow: inset 0px 0px 100px @grayLighter;
 }
 
+// Invert class styling
 .invert {
 	background-color: @grayDark;
 	color: @grayLighter;
 	
+	// Bottom-divider subclass styling (of invert class)
 	.bottom-divider {
 		border-color: @grayLighter;
 	}
 }
 
+// Small-divider class styling
 .small-divider {
 	position: relative;
 	padding-bottom: 10px;
 	margin-bottom: 10px;
 	
+	// Styling of content after the parent selector (designated by the & symbol)
 	&:after {
 		height: 1px;
 		position: absolute;
@@ -50,12 +64,14 @@
 	}
 }
 
+// Bottom-divider class styling
 .bottom-divider {
 	margin-bottom: 10px;
 	border-bottom: 1px solid @grayDarker;
 
 }
 
+// Divider-button class styling
 .divider-button {
 
 	position: absolute;
@@ -64,19 +80,22 @@
 	right: 0;
 	text-align: center;
 	z-index: 100;
-
+	
+	// Anchor tag stylings for divider-button class elements (extends the btn class)
 	a {
 		.btn;
 	}
 
 }
 
+// Parallax-cloud-border class styling 
 .parallax-cloud-border-orange {
 
 	margin-top: 40px;
 	margin-bottom: 40px;
 	position: relative;
-
+	
+	// Styling of content that appears before the parent selector element(designatd by the & symbol)
 	&:before {
 	
 		background-color: @primaryColor;
@@ -95,6 +114,7 @@
 	
 	}
 	
+	// Styling of content that appears after the parent selector element(designatd by the & symbol)
 	&:after {
 	
 		background-color: @primaryColor;
@@ -115,12 +135,14 @@
 
 }
 
+// Logo-slider class styling
 .logo-slider {
 
 	border-top: 1px solid @grayLighter;
 	border-bottom: 1px solid @grayLighter;
 	position: relative;
 	
+	// h3 element styling within logo-slider class elements
 	h3 {
 		position: absolute;
 		left: 0;
@@ -130,12 +152,14 @@
 		z-index: 10;
 	}
 	
+	// Logo subclass styling (of the logo-slider class)
 	.logo {
 		position: relative;
 		min-height: 130px;
 		margin-top: 10px;
 		margin-bottom: 10px;
 		
+		// Styling of the content after the parent selector element, logo subclass (designated by the & sign)
 		&:after {
 			position: absolute;
 			width: 1px;
@@ -146,14 +170,17 @@
 			content: ' ';
 		}
 		
+		// Styling of the last-child element of the parent selector, logo subclass (designated by the & sign)
 		&:last-child {
 		
+			// Styling for the content after the parent selector, logo subclass (designated by the & sign)
 			&:after {
 				display: none;
 			}
 		
 		}
 		
+		// Styling for anchor tags that carry the class attribute "partner"
 		a[class*="partner"] {
 		
 			display: block;
@@ -168,42 +195,52 @@
 		
 		}
 		
+		// Styling of the partner-1 class for anchor tags of the logo subclass
 		a.partner-1 {
 			background-image: url(@{stylesheet_directory_uri}/images/placeholder/partner-1.png);
 		}
 		
+		// Styling of the partner-2 class for anchor tags of the logo subclass
 		a.partner-2 {
 			background-image: url(@{stylesheet_directory_uri}/images/placeholder/partner-2.png);
 		}
 		
+		// Styling of the partner-3 class for anchor tags of the logo subclass
 		a.partner-3 {
 			background-image: url(@{stylesheet_directory_uri}/images/placeholder/partner-3.png);
 		}
 		
+		// Styling of the partner-4 class for anchor tags of the logo subclass
 		a.partner-4 {
 			background-image: url(@{stylesheet_directory_uri}/images/placeholder/partner-4.png);
 		}
 		
+		// Styling of the partner-5 class for anchor tags of the logo subclass
 		a.partner-5 {
 			background-image: url(@{stylesheet_directory_uri}/images/placeholder/partner-5.png);
 		}
 		
+		// Styling of the partner-6 class for anchor tags of the logo subclass
 		a.partner-6 {
 			background-image: url(@{stylesheet_directory_uri}/images/placeholder/partner-6.png);
 		}
 		
+		// Styling of the affiliation-1 class for anchor tags of the logo subclass
 		a.affiliation-1 {
 			background-image: url(@{stylesheet_directory_uri}/images/placeholder/affiliations-1.png);
 		}
 		
+		// Styling of the affiliation-2 class for anchor tags of the logo subclass
 		a.affiliation-2 {
 			background-image: url(@{stylesheet_directory_uri}/images/placeholder/affiliations-2.png);
 		}
 		
+		// Styling of the affiliation-3 class for anchor tags of the logo subclass
 		a.affiliation-3 {
 			background-image: url(@{stylesheet_directory_uri}/images/placeholder/affiliations-3.png);
 		}
 		
+		// Styling of the affiliation-4 class for anchor tags of the logo subclass
 		a.affiliation-4 {
 			background-image: url(@{stylesheet_directory_uri}/images/placeholder/affiliations-4.png);
 		}
@@ -211,6 +248,7 @@
 
 }
 
+// White-badge class styling
 .white-badge {
 	padding: 5px;
 	background: @white;
@@ -218,6 +256,7 @@
 	margin: 5px;
 	display: block;
 	
+	// Styling for the content that appears before the parent selector, white-badge class elements (designated by the & sign)
 	&:hover {
 		text-decoration: none;
 	}

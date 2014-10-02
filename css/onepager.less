@@ -1,5 +1,12 @@
+//
+// One-Pager Styling
+// -----------------
+
+
+// One-pager template's body parent styling
 body.page-template-one-pager-php {
 
+	//Section element styling (of the one-pager)
 	section {
 
 		padding: @paddingLarge;
@@ -8,6 +15,7 @@ body.page-template-one-pager-php {
 		padding-bottom: 66px;
 		position: relative;
 
+		// Parallax-breaker subclass styling (parent class item, a section element, designated by & sign) 
 		&.parallax-breaker {
 
 			border-top: 30px solid @grayDark;
@@ -23,7 +31,8 @@ body.page-template-one-pager-php {
 			background-attachment: fixed;
 			background-repeat: no-repeat;
 			background-size: 2000px 2000px;
-	
+			
+			// All p elements, within the parallax-breaker subclass, styling
 			p {
 				font-size: 20px;
 				line-height: 2em;
@@ -36,8 +45,10 @@ body.page-template-one-pager-php {
 
 }
 
+// Touch subclass styling
 body.touch {
-
+	
+	// Parallax-breaker subclass styling (for the touch subclass)
 	.parallax-breaker {
 		background-attachment: scroll;
 	}

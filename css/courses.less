@@ -1,3 +1,9 @@
+//
+// Course ID and Class Styling
+// --------------------------
+
+
+// Course-large class parent styling
 .course-large {
 
 	border: 1px solid @grayLighter;
@@ -5,6 +11,7 @@
 	padding: @paddingMedium;
 	text-align: center;
 	
+	// Course-large category subclass styling
 	.category {
 		position: absolute;
 		top: -15px;
@@ -15,6 +22,7 @@
 		height: 60px;
 		.transition( all .3s );
 		
+		// Styling of content before each course-large category subclass element
 		&:before {
 		
 			width: 0;
@@ -30,8 +38,10 @@
 		}
 	}
 	
+	// Image subclass parent styling (of course-large)
 	.image {
 	
+		// Image element styling
 		img {
 			width: 100px;
 			height: 100px;
@@ -43,25 +53,30 @@
 	
 	}
 	
+	// H3 element styling (extends small-divider class)
 	h3 {
 		.small-divider;
 	}
-	
+
+	// Description class element styling (extends small-divider class)
 	.description {
 		.small-divider;
 	}
 	
+	// Course-time element styling (extends small-divider class)
 	.course-time {
 		.small-divider;
 	}
 	
+	// View-course subclass styling (of course-large) 
 	.view-course {
 
 		position: relative;
 		bottom: -20px;
 		overflow: hidden;
 		height: 50px;
-	
+		
+		// All anchor tags (within the view-course subclass) styling
 		a {
 			background-color: @grayDark;
 			border-radius: 50%;
@@ -80,16 +95,20 @@
 		}
 	}
 	
+	// On hover, style the parent selector (designated with &)
 	&:hover {
-	
+		
+		// Changes the font color when category class element is hovered
 		.category {
 			background-color: @primaryColor;
 			
+			// Style content before the parent selector (designated with &)
 			&:before {
 				border-top-color: @primaryColor;
 			}
 		}
-	
+		
+		// On hover, change the anchor tag element background-color
 		.view-course a {
 			background-color: @primaryColor;
 		}
@@ -98,15 +117,19 @@
 
 }
 
+
+// Courses-carousel ID styling 
 #courses-carousel {
 	.box-shadow( none );
-
+	
+	// Styling of all <li> elements that have ul.slides class as a parent
 	ul.slides > li {
 		padding: 20px;
 		width: 394px;
 	}
 }
 
+// Category-button class parent styling
 .category-button {
 	width: 170px;
 	height: 170px;
@@ -115,7 +138,7 @@
 	margin: 0px auto;
 	padding: 10px;
 	
-	
+	// Category-image subclass styling (of category-button class)
 	.category-image {
 	
 		width: 100px;
@@ -130,32 +153,39 @@
 		position: relative;
 		top: 0;
 		
+		// Category-1 background-position styling of the parent selector (designated with &)
 		&.category-1 {
 			background-position: -35px -20px;
 		}
 		
+		// Category-2 background-position styling of the parent selector (designated with &)
 		&.category-2 {
 			background-position: -205px -190px;
 		}
 		
+		// Category-3 background-position styling of the parent selector (designated with &)
 		&.category-3 {
 			background-position: -35px -360px;
 		}
 		
+		// Category-4 background-position styling of the parent selector (designated with &)
 		&.category-4 {
 			background-position: -205px -20px;
 		}
 		
+		// Category-5 background-position styling of the parent selector (designated with &)
 		&.category-5 {
 			background-position: -35px -190px;
 		}
 		
+		// Category-6 background-position styling of the parent selector (designated with &)
 		&.category-6 {
 			background-position: -205px -360px;
 		}
 	
 	}
 	
+	// Category-title subclass styling (of category-button class)
 	.category-title {
 	
 		text-align: center;
@@ -166,8 +196,10 @@
 	
 	}
 	
+	// Hover styling of the parent selector, category-button (designated by &)
 	&:hover {
 	
+		// Category-image styling, when the parent selector, category-button, is hovered
 		.category-image {
 		
 			border-width: 3px;
@@ -179,6 +211,7 @@
 	}
 }
 
+// Course-category-carousel ID styling
 #course-category-carousel {
 	position: relative;
 }

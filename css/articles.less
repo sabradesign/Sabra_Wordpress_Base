@@ -1,19 +1,29 @@
+//
+// Thumbnail Article Styling
+// ------------------------
+
+
+// Parent class
 .thumbnails {
 
+	// Article subclass positions and styles the background
 	article {
 	
 		padding-left: 100px;
 		background: transparent url(@{stylesheet_directory_uri}/images/cloud-black.png) no-repeat left top;
-	
+		
+		// Date subclass styles text with variable color and size
 		.date {
 			color: @grayLight;
 			font-size: 75%;
 		}
 		
+		// H5 tag styled margin
 		h5 {
 			margin-top: 0px;
 		}
 		
+		// Excerpt subclass of all articles margin bottom increased by 15px
 		.excerpt {
 			margin-bottom: 15px;
 		}
