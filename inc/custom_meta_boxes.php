@@ -97,15 +97,10 @@ $meta_boxes[] = array(
 			'id'   => "{$prefix}number_posts",
 			'type' => 'number',
 			'std'	=>	10
-		),
-		array(
-			'name' => 'After Content',
-			'id'   => "{$prefix}after_content",
-			'type' => 'wysiwyg'
 		)
 	),
 	'only_on'    => array(
-		'template' => array( 'onepager-slider.php', 'onepager-modals.php' )
+		'template' => array( 'onepager-slider.php', 'onepager-modals.php', 'onepager-TestimonialsSlider.php', 'onepager-homeslider.php' )
 	)
 );
 
@@ -197,6 +192,36 @@ $meta_boxes[] = array(
 			'name' => 'Exclude from Menu',
 			'id'   => "{$prefix}exclude_from_menu",
 			'type' => 'checkbox',
+		),
+		
+		// CUSTOMIZE AVAILABLE ADDITIONAL STYLES HERE
+		
+		array(
+			'name' => 'Additional Styles',
+			'id'   => "{$prefix}additional_classes",
+			'type' => 'select_advanced',
+			'multiple'	=>	true,
+			'options'	=>	array(
+				'pink-bg'	=>	'Pink Background',
+				'teal-bg'	=>	'Teal Background',
+				'diamond-pattern-bg'	=>	'Diamond Pattern',
+				'black-bg'	=>	'Black Background',
+				'light-gray-bg'	=>	'Light Gray Background',
+				'blue-bg'	=>	'Blue Background',
+				'taptin-abstract'	=>	'TaptIn Abstract BG',
+				'plexus-abstract'	=>	'Plexus Abstract with Words',
+				'silhouettes-1'	=>	'Silhouettes 1',
+				'silhouettes-2'	=>	'Silhouettes 2',
+				'silhouettes-3'	=>	'Silhouettes 3',
+				'black-pinstripe-bg'	=>	'Black Pinstripe Background',
+				'cross-hatched-bg'	=>	'Cross Hatched Background',
+				'thin-pinstripe-bg'	=>	'Thin Pinstripe Background'
+			)
+		),
+		array(
+			'name' => 'After Content',
+			'id'   => "{$prefix}after_content",
+			'type' => 'wysiwyg'
 		)
 	),
 	'only_on'	=>	array(
@@ -231,7 +256,7 @@ $meta_boxes[] = array(
 	'fields' => array(
 		array(
 			'name' => 'Person Name',
-			'id'   => "{$prefix}testimonial_name",
+			'id'   => "post_title",
 			'type' => 'text'
 		),
 		array(
@@ -376,6 +401,14 @@ function rw_maybe_include( $conditions ) {
 				$template = get_post_meta( $post_id, '_wp_page_template', true );
 				if ( in_array( $template, $v ) ) {
 					return true;
+				}
+			break;
+			case 'parent_template':
+				if ( is_object( $post ) ) {
+					$template = get_post_meta( $post->post_parent, '_wp_page_template', true );
+					if ( in_array( $template, $v ) ) {
+						return true;
+					}
 				}
 			break;
 		}

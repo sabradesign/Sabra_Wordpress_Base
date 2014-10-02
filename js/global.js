@@ -204,4 +204,6 @@ jQuery(document).ready( function($) {
 		
 	});
 	
+	if ( jQuery('.vertical-center').length > 0 ) window.flexVerticalCenter( jQuery('.vertical-center'));
+	
 });

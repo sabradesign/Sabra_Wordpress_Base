@@ -80,6 +80,15 @@ function sabra_enqueue_scripts_styles() {
 		'version'		=>	'1.10.3',
 		'in_footer'		=>	true
 	);
+	
+	// Script Name:  VERTICAL CENTERING
+	$scripts[] = array(
+		'handle'	=>	'flexverticalcenter',
+		'src'	=>	get_template_directory_uri() . '/js/flexverticalcenter.js',
+		'dependencies'	=>	array( 'jquery' ),
+		'version'		=>	'1.0',
+		'in_footer'		=>	false
+	);
 
 	// Script Name:  MMENU
 	$scripts[] = array(

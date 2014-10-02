@@ -1155,4 +1155,38 @@ add_shortcode('user_gravatar', 'shortcode_user_gravatar');
 			
 	}
 
+//////////////////////////////////////////////////////////////////
+// Social Media Icons
+// [social_media]
+//////////////////////////////////////////////////////////////////
+add_shortcode('social_icons', 'shortcode_social_icons');
+function shortcode_social_icons($atts, $content) {
+	$atts = shortcode_atts(
+		array(
+			'facebook'	=>	'',
+			'twitter'	=> 	'',
+			'linkedin'	=>	'',
+			'youtube'	=>	''
+		), $atts);
+	extract( $atts );
+	
+	$social = get_option('company_social');
+	
+	$output = '<ul class="social-media-links">';
+	
+		foreach( $social as $network => $url ) {
+			
+			$output .= "<li>";
+			$output .= '<a href="' . $url . '" class="' . $network . '"></a>';
+			$output .= "</li>";
+			
+		}
+		
+	$output .= '<li><a href="' . site_url('feed') . '" class="rss"></a>';
+	
+	$output .= '</ul>';
+	
+	return $output;
+		
+}
 ?>

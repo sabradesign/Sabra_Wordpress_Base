@@ -93,10 +93,9 @@ if ( $childchildren->have_posts() ) : ?>
 					} else {
 						$new .= '<img src="'.get_stylesheet_directory_uri().'/images/sun-divider.png" style="border: none;" />';
 					}
-			
-					if ( $name = get_post_meta( get_the_ID(), '{$prefix}testimonial_name', true ) ) {
-						$new .= $name;
-					}
+					
+					$new .= get_the_title();
+						
 			
 					if ( $title = get_post_meta( get_the_ID(), '{$prefix}testimonial_title', true ) ) {
 						$new .= ', <span class="testimonial-title">'.$title.'</span>';

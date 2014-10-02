@@ -7,5 +7,18 @@
 }
 
 .row-fluid [class*="span"] {
-	margin-left: 2.46%;
+	margin-left: 2.1%;
+	
+	@media @mobile {
+		margin-left: 0;
+	}
+}
+
+.container {
+	@media @mobile {
+		margin-left: 1.5em;
+		margin-right: 1.5em;
+		padding-left: 0;
+		padding-right: 0;
+	}
 }

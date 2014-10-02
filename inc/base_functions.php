@@ -151,10 +151,29 @@ function register_required_plugins() {
 			'name'		=>	'What The Bar',
 			'slug'		=>	'what-the-bar',
 			'required'	=>	false
+		),
+		array(
+			'name'		=>	'Tweet Blender',
+			'slug'		=>	'tweet-blender',
+			'required'	=>	false
+		),
+		array(
+			'name'		=>	'Admin Menu Editor',
+			'slug'		=>	'admin-menu-editor',
+			'required'	=>	false
+		),
+		array(
+			'name'		=>	'TinyMCE Advanced',
+			'slug'		=>	'tinymce-advanced',
+			'required'	=>	false
+		),
+		array(
+			'name'		=>	'iThemes Security',
+			'slug'		=>	'better-wp-security',
+			'required'	=>	false
 		)
 
 	);
-
 
 	$theme_text_domain = 'Sabra';
 	$config = array(
@@ -246,7 +265,7 @@ function sabra_onepager_redirect() {
 
 	global $post;
 	
-	if ( $post->post_type != 'page' ) return true;
+	if ( isset( $post ) && $post->post_type != 'page' ) return true;
 	
 	if ( !empty( $post->post_parent ) ) {
 	
@@ -272,5 +291,38 @@ function sabra_onepager_redirect() {
 
 }
 add_action( 'wp', 'sabra_onepager_redirect' );
+
+function show_full_width_site() {
+	
+	if ( isset($_REQUEST['fullwidth'])) {
+		
+		if ( $_REQUEST['fullwidth'] == 1 ) {
+		
+			setcookie('fullwidth', 1, 0, '/');
+			
+		} elseif ( $_REQUEST['fullwidth'] == 0 ) {
+			
+			setcookie('fullwidth', '');
+			
+		}
+		
+	}
+	
+}
+add_action('init', 'show_full_width_site');
+
+// ADD FULL WIDTH CLASS TO BODY
+add_filter('body_class', 'full_width_site_class');
+
+function full_width_site_class($classes) {
+
+		if ( ( isset( $_REQUEST['fullwidth']) && $_REQUEST['fullwidth'] == 1 ) || ( isset($_COOKIE['fullwidth']) && $_GET['fullwidth'] != 0 ) ) {
+		
+			$classes[] = 'full-width-site';
+		
+		}
+        
+        return $classes;
+}
 
 ?>

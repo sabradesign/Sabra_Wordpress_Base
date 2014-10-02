@@ -19,7 +19,11 @@
 <!--<![endif]-->
 <head>
 <meta charset="<?php bloginfo( 'charset' ); ?>" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<?php if ( ( isset($_GET['fullwidth']) && $_GET['fullwidth'] == 1 ) || ( isset($_COOKIE['fullwidth']) && $_GET['fullwidth'] != 0 ) ) : ?>
+	<meta name="viewport" content="width=980, initial-scale=.3">
+<?php else : ?>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<?php endif; ?>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title><?php
