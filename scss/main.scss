@@ -1,0 +1,70 @@
+/*****************************************************************************************
+************************************** BASE STYLES ***************************************
+*****************************************************************************************/
+
+// BOOTSTRAP CSS
+@import "bootstrap/bootstrap.less";
+
+// FANCYBOX STYLES
+@import "fancybox/jquery.fancybox.less";
+@import "fancybox/jquery.fancybox-thumbs.less";
+@import "fancybox/jquery.fancybox-buttons.less";
+
+// OWL CAROUSEL STYLES
+@import "owl-carousel/owl.carousel.less";
+@import "owl-carousel/owl.themes.less";
+@import "owl-carousel/owl.transitions.less";
+
+// MMENU STYLES
+@import "jquery.mmenu.all.less";
+
+// SELECT 2 STYLES
+@import "../js/select2/select2.less";
+
+// BOOTSTRAP TWEAKS
+@import "bootstrap-tweaks.less";
+
+// BOOTSTRAP TWEAKS
+@import "onepager.less";
+
+/*****************************************************************************************
+********************************** WP TEMPLATE STYLES ************************************
+*****************************************************************************************/
+
+// HEADER
+@import "header.less";
+
+// FOOTER
+@import "footer.less";
+
+// PARAGRAPH
+@import "paragraph.less";
+
+// SOCIAL MEDIA
+@import "social_media.less";
+
+
+/*****************************************************************************************
+************************************ GENERAL STYLES **************************************
+*****************************************************************************************/
+
+// FORM STYLES
+@import 'forms.less';
+
+// COURSES
+@import "courses.less";
+
+// COURSES
+@import "articles.less";
+
+// HOME
+@import "home.less";
+
+// LOGIN FORM STYLES
+@import "custom_login.less";
+
+// SECTION STYLES
+@import "section_styles.less";
+
+// UTILITY STYLES
+@import 'utility.less';

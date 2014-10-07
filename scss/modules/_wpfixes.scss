@@ -1,0 +1,23 @@
+// WORDPRESS FIXES
+
+.alignleft {
+	float: left;
+	margin-right: 2em;
+}
+
+.alignright {
+	float: right;
+	margin-left: 2em;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+	.row-fluid [class*="span"] {
+		margin-left: 2.06243093923%;
+	}
+}
+
+@media (max-width: 767px) {
+	.row-fluid [class*="span"] {
+		margin-left: 0;
+	}
+}
