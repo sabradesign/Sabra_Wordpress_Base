@@ -5,6 +5,7 @@
        -o-transition: @transition;
           transition: @transition;
 }
+
 .columns(@columns, @gap) {
 	columns: @columns;
 	-webkit-columns: @columns;

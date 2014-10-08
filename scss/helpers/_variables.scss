@@ -1,3 +1,6 @@
+//Bourbon Import
+@import "../scss/bourbon/bourbon";
+
 // Brand ID colors
 $primaryColor: #e64f25;
 $secondaryColor: #333;
@@ -87,7 +90,7 @@ $btnInverseBackgroundHighlight:     $grayDarker;
 
 // Typography
 // -------------------------
-$sansFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif;
+$sansFontFamily:        $helvetica;
 $serifFontFamily:       Oranienbaum, Georgia, "Times New Roman", Times, serif;
 $monoFontFamily:        Monaco, Menlo, Consolas, "Courier New", monospace;
 
@@ -174,11 +177,3 @@ $popoverArrowOuterColor:  rgba(0,0,0,.25);
 @desktop: ~"( min-width: 980px ) and ( max-width: 1200px )";
 @tablet: ~"( min-width: 768px ) and ( max-width: 979px )";
 @mobile: ~"( max-width: 767px )";
-
-
-$desktop-min-width: 1200px;
-$desktop-pair: 980px 1200px;
-$tablet-pair: 768px 979px;
-$mobile-max-width: 767px;
-
-$max-width: em(1200) !default
