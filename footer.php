@@ -52,10 +52,16 @@
 	<div class="container">
 		<div class="row">
 			<div class="span6">
-				Social Media Icons Here
+				<p>Social Media Icons Here</p>
 			</div>
 			<div class="span6">
-				Footer Menu Here
+				<p>Footer Menu Here</p>
+				<ul>
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li><a>4</a></li>
+				</ul>
 			</div>
 		</div>
 	</div>
