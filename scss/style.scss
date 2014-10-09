@@ -6,8 +6,15 @@ Author:         Sabra Design
 Author URI:     http://sabradesign.me
 Version:        1.2
 */
+
+
+// BOURBON CSS
+@import 'bourbon/bourbon';
+
+
 footer {
-  color: red;
-  background-color: black;
-  font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+	color: red;
+	background-color: black;
+	font-family: $helvetica;
+				
 }
