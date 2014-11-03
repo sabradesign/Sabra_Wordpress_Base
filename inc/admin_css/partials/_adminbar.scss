@@ -1,0 +1,41 @@
+#wpadminbar {
+
+	background: $adminmenu;
+	
+	.ab-top-menu>li.hover>.ab-item,
+	.ab-top-menu>li:hover>.ab-item,
+	.ab-top-menu>li>.ab-item:focus,
+	.quicklinks .ab-top-menu>li>.ab-item:focus {
+		color: $adminmenuhovercolor;
+	}
+	
+	&>#wp-toolbar {
+		a:focus span.ab-label,
+		li.hover span.ab-label,
+		li:hover span.ab-label {
+			color: $adminmenuhovercolor;
+		}
+	}
+	
+	.quicklinks .menupop ul li a:focus,
+	.quicklinks .menupop ul li a:focus strong,
+	.quicklinks .menupop ul li a:hover,
+	.quicklinks .menupop ul li a:hover strong,
+	.quicklinks .menupop.hover ul li a:focus,
+	.quicklinks .menupop.hover ul li a:hover,
+	li a:focus .ab-icon:before,
+	li.hover .ab-icon:before,
+	li.hover .ab-item:before,
+	li:hover #adminbarsearch:before,
+	li:hover .ab-icon:before,
+	li:hover .ab-item:before,
+	&.nojs .quicklinks .menupop:hover ul li a:focus,
+	&.nojs .quicklinks .menupop:hover ul li a:hover {
+		color: $adminmenuhovercolor;
+	}
+	
+}
+
+li .ab-item:focus:before {
+	color: $adminmenuhovercolor;
+}

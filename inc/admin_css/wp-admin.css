@@ -1,0 +1,127 @@
+/*
+ADMIN CSS STYLES
+Author:	Sabra Design
+*/
+html {
+  background: #f1f1f1; }
+
+body {
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+  body h1, body h2, body h3 {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+
+#wpadminbar {
+  background: #222; }
+  #wpadminbar .ab-top-menu > li.hover > .ab-item,
+  #wpadminbar .ab-top-menu > li:hover > .ab-item,
+  #wpadminbar .ab-top-menu > li > .ab-item:focus,
+  #wpadminbar .quicklinks .ab-top-menu > li > .ab-item:focus {
+    color: #FFFFFF; }
+  #wpadminbar > #wp-toolbar a:focus span.ab-label,
+  #wpadminbar > #wp-toolbar li.hover span.ab-label,
+  #wpadminbar > #wp-toolbar li:hover span.ab-label {
+    color: #FFFFFF; }
+  #wpadminbar .quicklinks .menupop ul li a:focus,
+  #wpadminbar .quicklinks .menupop ul li a:focus strong,
+  #wpadminbar .quicklinks .menupop ul li a:hover,
+  #wpadminbar .quicklinks .menupop ul li a:hover strong,
+  #wpadminbar .quicklinks .menupop.hover ul li a:focus,
+  #wpadminbar .quicklinks .menupop.hover ul li a:hover,
+  #wpadminbar li a:focus .ab-icon:before,
+  #wpadminbar li.hover .ab-icon:before,
+  #wpadminbar li.hover .ab-item:before,
+  #wpadminbar li:hover #adminbarsearch:before,
+  #wpadminbar li:hover .ab-icon:before,
+  #wpadminbar li:hover .ab-item:before, #wpadminbar.nojs .quicklinks .menupop:hover ul li a:focus, #wpadminbar.nojs .quicklinks .menupop:hover ul li a:hover {
+    color: #FFFFFF; }
+
+li .ab-item:focus:before {
+  color: #FFFFFF; }
+
+#adminmenuwrap,
+#adminmenuback {
+  background: #222; }
+
+#adminmenu {
+  background: #222; }
+  #adminmenu:before {
+    content: '';
+    width: 140px;
+    height: 140px;
+    display: block;
+    margin: 10px auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 140px 140px;
+    background-color: #222222;
+    background-image: url("Dashboard-HeroesLinked-Mark_NEG.png");
+    border: 1px solid #666; }
+  #adminmenu a {
+    color: #eeeeee; }
+    #adminmenu a:hover {
+      color: #FFFFFF; }
+  #adminmenu .wp-submenu {
+    background-color: #3c3c3c; }
+    #adminmenu .wp-submenu li.current a {
+      color: #ffffff; }
+    #adminmenu .wp-submenu a:hover {
+      color: #FFFFFF; }
+  #adminmenu li.menu-top:hover, #adminmenu li.opensub > a.menu-top, #adminmenu li > a.menu-top:focus, #adminmenu li.current a.menu-top {
+    background-color: #D71E26;
+    color: #FFFFFF; }
+  #adminmenu li.wp-has-submenu.wp-not-current-submenu.opensub:hover:after {
+    border-right-color: #3c3c3c; }
+  #adminmenu li.wp-has-current-submenu .wp-submenu {
+    background-color: #3c3c3c; }
+  #adminmenu li.wp-has-current-submenu a.wp-has-current-submenu {
+    background-color: #D71E26;
+    color: #ffffff; }
+  #adminmenu li:hover div.wp-menu-image:before {
+    color: #FFFFFF; }
+  #adminmenu div.wp-menu-image:before {
+    color: #e1e1e1; }
+  #adminmenu .wp-has-current-submenu .wp-submenu a:hover {
+    color: #FFFFFF; }
+  #adminmenu .current div.wp-menu-image:before,
+  #adminmenu .wp-has-current-submenu div.wp-menu-image:before,
+  #adminmenu a.current:hover div.wp-menu-image:before,
+  #adminmenu a.wp-has-current-submenu:hover div.wp-menu-image:before,
+  #adminmenu li.wp-has-current-submenu:hover div.wp-menu-image:before {
+    color: #ffffff; }
+  #adminmenu .awaiting-mod,
+  #adminmenu .update-plugins {
+    background-color: #D71E26; }
+
+a {
+  color: #D71E26; }
+  a:hover {
+    color: #062744; }
+
+.wp-core-ui .button-primary {
+  background: #D71E26;
+  border-color: #aa181e;
+  color: #fff; }
+  .wp-core-ui .button-primary:hover, .wp-core-ui .button-primary:active, .wp-core-ui .button-primary:focus {
+    background: #e5434a;
+    border-color: #D71E26; }
+
+#dashboard_right_now .shows-count a:before {
+  content: "\f234"; }
+#dashboard_right_now .facilities-count a:before {
+  content: "\f102"; }
+#dashboard_right_now .faqs-count a:before {
+  content: "\f223"; }
+#dashboard_right_now .resources-count a:before {
+  content: "\f123"; }
+#dashboard_right_now .partners-count a:before {
+  content: "\f307"; }
+#dashboard_right_now .press-count a:before {
+  content: "\f177"; }
+#dashboard_right_now .staff-count a:before {
+  content: "\f110"; }
+#dashboard_right_now .directors-count a:before {
+  content: "\f338"; }
+#dashboard_right_now .crewcalls-count a:before {
+  content: "\f488"; }
+#dashboard_right_now .jobs-count a:before {
+  content: "\f337"; }

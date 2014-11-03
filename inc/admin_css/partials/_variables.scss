@@ -1,0 +1,32 @@
+//COLORS
+
+$primaryColor:	#D71E26;
+$secondaryColor: #062744;
+$highlightColor: #EFBA1C;
+
+$background: #f1f1f1;
+
+// LOGO (140px x 140px, 280px x 280px for RETINA)
+$clientLogo: url('Dashboard-HeroesLinked-Mark_NEG.png');
+$clientLogoBackground: #222222;
+$clientLogoBorderColor: #BBBBBB;
+
+//FONTS
+$mainFont: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$titlesFont: $mainFont;
+
+// MENUS
+// Backgrounds
+$adminmenu: #222;
+$adminsubmenu: lighten( $adminmenu, 10% );
+$adminmenuselected: $primaryColor;
+
+// Text
+$adminmenucolor: #eeeeee;
+$adminmenuhovercolor: #FFFFFF;
+$adminmenuselectcolor: #ffffff;
+
+// Icons
+$adminmenuiconcolor: darken( $adminmenucolor, 5% );
+$adminmenuiconhovercolor: $adminmenuhovercolor;
+$adminmenuiconselectcolor: $adminmenuselectcolor;

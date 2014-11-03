@@ -1,0 +1,63 @@
+#dashboard_right_now {
+
+	.shows-count {
+		a:before {
+			content: "\f234";
+		}
+	}
+	
+	.facilities-count {
+		a:before {
+			content: "\f102";
+		}
+	}
+	
+	.faqs-count {
+		a:before {
+			content: "\f223";
+		}
+	}
+	
+	.resources-count {
+		a:before {
+			content: "\f123";
+		}
+	}
+	
+	.partners-count {
+		a:before {
+			content: "\f307";
+		}
+	}
+	
+	.press-count {
+		a:before {
+			content: "\f177";
+		}
+	}
+	
+	.staff-count {
+		a:before {
+			content: "\f110";
+		}
+	}
+	
+	.directors-count {
+		a:before {
+			content: "\f338";
+		}
+	}
+	
+	.crewcalls-count {
+		a:before {
+			content: "\f488";
+		}
+	}
+	
+	.jobs-count {
+		a:before {
+			content: "\f337";
+		}
+	}
+	
+}

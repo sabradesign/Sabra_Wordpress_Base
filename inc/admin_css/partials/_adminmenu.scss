@@ -1,0 +1,127 @@
+#adminmenuwrap,
+#adminmenuback {
+	background: $adminmenu;
+}
+
+#adminmenu {
+
+	&:before {
+		content: '';
+		width: 140px;
+		height: 140px;
+		display: block;
+		margin: 10px auto;
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: 140px 140px;
+		background-color: $clientLogoBackground;
+		background-image: $clientLogo;
+		border: 1px solid #666;
+
+;
+	}
+	
+	background: $adminmenu;
+	
+	a {
+		color: $adminmenucolor;
+		
+		&:hover {
+			color: $adminmenuhovercolor;
+		}
+	}
+	
+	.wp-submenu {
+		background-color: $adminsubmenu;
+		
+		li {
+			
+			&.current {
+				
+				a {
+					color: $adminmenuselectcolor;
+				}
+				
+			}
+			
+		}
+		
+		a
+		 {
+			
+			&:hover {
+				color: $adminmenuhovercolor;
+			}
+			
+		}
+		
+		
+	}
+	
+	li {
+		
+		&.menu-top:hover,
+		&.opensub > a.menu-top,
+		&>a.menu-top:focus,
+		&.current a.menu-top {
+			background-color: $adminmenuselected;
+			color: $adminmenuhovercolor;
+		}
+		
+		&.wp-has-submenu.wp-not-current-submenu.opensub:hover:after {
+			border-right-color: $adminsubmenu;
+		}
+		
+		&.wp-has-current-submenu {
+			
+			.wp-submenu {
+				
+				background-color: $adminsubmenu;
+				
+			}
+			
+			a.wp-has-current-submenu {
+				background-color: $adminmenuselected;
+				color: $adminmenuselectcolor
+			}
+			
+		}
+		
+		&:hover {
+			div.wp-menu-image:before {
+				color: $adminmenuiconhovercolor;
+			}
+		}
+		
+	}
+	
+	div.wp-menu-image:before {
+		
+		color: $adminmenuiconcolor;
+		
+	}
+	
+	.wp-has-current-submenu .wp-submenu a {
+		&:hover {
+			color: $adminmenuhovercolor;
+		}
+		
+	}
+	
+	.current,
+	.wp-has-current-submenu,
+	a.current:hover,
+	a.wp-has-current-submenu:hover,
+	li.wp-has-current-submenu:hover {
+		div.wp-menu-image:before {
+			color: $adminmenuiconselectcolor;
+		}
+	}
+	
+	.awaiting-mod,
+	.update-plugins {
+		background-color: $primaryColor;
+		
+	}
+	
+}

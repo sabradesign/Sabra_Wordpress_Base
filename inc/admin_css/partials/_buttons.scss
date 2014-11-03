@@ -1,0 +1,26 @@
+a {
+	color: $primaryColor;
+	
+	&:hover {
+		color: $secondaryColor;
+	}
+}
+
+.wp-core-ui {
+	
+	.button-primary {
+		
+		background: $primaryColor;
+		border-color: darken( $primaryColor, 10% );
+		color: #fff;
+		
+		&:hover,
+		&:active,
+		&:focus {
+			background: lighten( $primaryColor, 10% );
+			border-color: $primaryColor;
+		}
+		
+	}
+	
+}

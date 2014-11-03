@@ -19,6 +19,7 @@ include_once( 'theme_init.php' );
 include_once( 'tiny_mce_buttons.php' );
 include_once( 'nav-walker.php' );
 include_once( 'admin_menus.php' );
+include_once( 'dashboard_widgets.php' );
 
 
 // INCLUDE NECESSARY PLUGINS
@@ -324,5 +325,19 @@ function full_width_site_class($classes) {
         
         return $classes;
 }
+
+// REMOVE WP LOGO FROM BACKEND
+add_action( 'admin_bar_menu', 'remove_wp_logo', 999 );
+
+function remove_wp_logo( $wp_admin_bar ) {
+	$wp_admin_bar->remove_node( 'wp-logo' );
+}
+
+// ADD ADMIN CSS STYLES
+function my_admin_theme_style() {
+    wp_enqueue_style('my-admin-theme', get_stylesheet_directory_uri().'/inc/admin_css/wp-admin.css');
+}
+add_action('admin_enqueue_scripts', 'my_admin_theme_style');
+add_action('login_enqueue_scripts', 'my_admin_theme_style');
 
 ?>
