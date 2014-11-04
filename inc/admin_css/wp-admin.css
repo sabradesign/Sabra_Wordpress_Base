@@ -43,6 +43,7 @@ li .ab-item:focus:before {
   background: #222; }
 
 #adminmenu {
+  background-size: 280px 280px;
   background: #222; }
   #adminmenu:before {
     content: '';
@@ -52,10 +53,12 @@ li .ab-item:focus:before {
     margin: 10px auto;
     background-position: center center;
     background-repeat: no-repeat;
-    background-size: 140px 140px;
+    /* 		background-size: 140px 140px; */
     background-color: #222222;
     background-image: url("Dashboard-HeroesLinked-Mark_NEG.png");
-    border: 1px solid #666; }
+    border: 1px solid #666;
+    border-color: #BBBBBB;
+    /* 		box-shadow: 1px 1px 10px #000; */ }
   #adminmenu a {
     color: #eeeeee; }
     #adminmenu a:hover {

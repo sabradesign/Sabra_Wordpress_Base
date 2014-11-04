@@ -17,6 +17,8 @@
 		background-color: $clientLogoBackground;
 		background-image: $clientLogo;
 		border: 1px solid #666;
+		border-color: $clientLogoBorderColor;
+		box-shadow: 1px 1px 10px #000;
 
 ;
 	}
